@@ -1,0 +1,396 @@
+\secnumbersection{Validación de la solución}
+
+
+% Se debe validar la solución propuesta. Esto significa probar o demostrar que la solución propuesta es válida para el entorno donde fue planteada.
+
+% Tradicionalmente es una etapa crítica, pues debe comprobarse por algún medio que vuestra propuesta es básicamente válida. En el caso de un desarrollo de software es la construcción y sus pruebas; en el caso de propuestas de modelos, guías o metodologías podrían ser desde la aplicación a un caso real hasta encuestas o entrevistas con especialistas; en el caso de mejoras de procesos u optimizaciones, podría ser comparar la situación actual (previa a la memoria) con la situación final (cuando la memoria está ya implementada) en base a un conjunto cuantitativo de indicadores o criterios.
+
+% \subsection{EJEMPLO DE COMO CITAR TABLAS}
+
+% Se colocó una tabla que se puede referenciar también desde el texto (Ver tabla \ref{table:coloquios}).
+
+% \begin{table}[h]
+%     \centering
+%     \caption{\label{table:coloquios} Coloquios del Ciclo de Charlas Informática.} Fuente: Elaboración Propia.
+%     \begin{tabular}{|p{7cm}|p{7cm}|}
+%         \hline
+%         Título Coloquio & Presentador, País \\
+%         \hline
+%         ``Sensible, invisible, sometimes tolerant, heterogeneous, decentralized and interoperable... and we still need to assure its quality...''' & Guilherme Horta Travassos, Brasil.\\
+%         \hline
+%         ``Dispersed Multiphase Flow Modeling: From Environmental to Industrial Applications''' & Orlando Ayala, EE.UU.\\
+%         \hline
+%         ``Líneas de Producto Software Dinámicas para Sistemas atentos el Contexto''' & Rafael Capilla, España.\\
+%         \hline
+%         ... & ... \\
+%         \hline
+%     \end{tabular}
+% \end{table}
+
+% \subsection{Implementación}
+
+\subsection{Stack de tecnologías}
+
+En primera instancia existe la tentación por implementar una modificación completa de la herramienta \textit{MESHER\_GENERATOR}, esto es viable pero se descarta cuando se prioriza la escalabilidad y mantenibilidad de código. Sobre la eficiencia y rapidez de la propuesta, que son características importantes que evidencian calidad, se evaluarán en secciones posteriores.
+En \textit{MESHER\_GENERATOR} sólo se realizarán las modificaciones descritas en las secciones anteriores que incluyen funcionalidades para identificar y exportar los Octantes a refinar, para generar estadísticas al finalizar el refinamiento en las mallas y las pequeñas modificaciones a las funcionalidades de exportación de la información de los Octantes para luego identificarlos globalmente y así refinar los Octantes correctos.
+
+Entonces, como debemos ejecutar \textit{MESHER\_GENERATOR}, existen varias formas de realizar esto, pero se escogerá la que utilice menos recursos para ejecutar llamadas a sistema como lo hace \textit{bash} en linux. Ya que se requiere de funcionalidades básicas como iteraciones y manipulación de archivos, esta es una buena herramienta a utilizar.
+
+\subsection{Proceso de análisis}
+
+Para validar la propuesta, se utilizará una serie de mallas con diferentes complejidades.
+\begin{itemize}
+    \item Malla de corteza cerebral con área de refinamiento prismática en la zona frontal.
+
+        Propuesta inicial, de por sí la malla de corteza cerebral posee una complejidad media, contiene algunas zonas cóncavas que podrían complejizar el refinamiento. El prisma se posicionará en la zona del lóbulo frontal.
+    \item Malla de corteza cerebral con área de refinamiento prismática en la zona trasera.
+
+        En la zona trasera, lóbulo occipital de la corteza cerebral, de naturaleza cóncava e irregular se posicionará el prisma para refinar localmente, esto con el fin de complejizar el trabajo del algoritmo.
+    \item Malla de Moai con área de refinamiento prismática en la zona superior.
+
+        Para este análisis se escogió una representación de un Moai, que naturalmente no posee múltiples zonas cóncavas, entonces se aplicará el área de refinamiento en la zona superior donde se presenta la mayor cantidad de zonas cóncavas. 
+    \item Malla de Moai con área de refinamiento prismática en la zona inferior.
+
+        Se utilizará también la zona inferior, que no posee mayor nivel de complejidad respecto a su concavidad, con motivo de aumentar el universo de soluciones.
+    \item Malla de paladar con área de refinamiento prismática en la zona superior.
+
+        Esta representación posee áreas muy finas con respecto a el resto de la malla, entonces se aplicó un área de refinamiento adicional en la zona superior por su complejidad en función de concavidad.
+    \item Malla de coxis.
+
+        En general esta representación es muy compleja, presenta zonas muy pequeñas y con múltiples concavidades.
+\end{itemize}
+
+A cada una de estas mallas se les aplicará el algoritmo propuesto con un threshold cero y cien iteraciones como cota superior. 
+Luego de iterar las mallas, se analizará sus estadísticas sobre Elementos de mala calidad.
+
+\subsection{Ejecución}
+
+En cada malla dependiendo de su complejidad se aplicará o no, un área prismática para refinar localmente, de esta manera añadir consistencia a los resultados.
+
+La única malla a la que no se le aplicará el área prismática es la malla de coxis debido a su compleja naturaleza explicada en la sección anterior.
+
+\subsubsection{Malla de corteza cerebral}
+
+Al implementar el algoritmo propuesto en la malla de corteza cerebral, entregándole como input el threshold definido en esta propuesta, el modelo de la corteza, el modelo de la superficie prismática a refinar, la base de nombre de los archivos exportados y una cota de cien iteraciones.  Obtenemos el siguiente output \ref{out:cortex_1}, que nos muestra un identificador de cada iteración con la cantidad de Octantes a refinar al finalizar dicha iteración, finalizando exitosamente en la cuarta iteración con una malla sin elementos inválidos y reduciendo la cantidad de Octantes a refinar casi de manera exponencial.
+
+Luego se ejecutó el algoritmo con la zona a refinar en el lóbulo occipital con el siguiente output \ref{out:cortex_2}.
+
+Si bien, en esta ocasión se logró obtener una malla válida con algunas iteraciones adicionales, la cantidad de Elementos inválidos se comporta similar a el caso anterior.
+
+
+\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de corteza cerebral con zona a refinar en lóbulo frontal.\\ Fuente: Elaboración propia.},label={out:cortex_1}]
+input  >    ./script.sh 0.0 ./data/cortex.mdl ./data/cortex_surf_roi.mdl c_5r7 100
+output >    Threshold: 0.0
+            Main surface: ./data/cortex.mdl
+            Reference surface: ./data/cortex_surf_roi.mdl
+            Base name: c_5r7
+            Number of iterations: 100
+            Octants to improve in iteration 0: 21
+            Octants to improve in iteration 1: 7
+            Octants to improve in iteration 2: 2
+            Octants to improve in iteration 3: 1
+            No more Octants to improve in iteration 4.
+\end{lstlisting}
+
+\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de corteza cerebral con zona a refinar en lóbulo occipital.\\ Fuente: Elaboración propia.},label={out:cortex_2}]
+input  >    ./script.sh 0.0 ./data/cortex.mdl ./data/cortex_surf_roi_2.mdl c_5r7_2 100
+output >    Threshold: 0.0
+            Main surface: ./data/cortex.mdl
+            Reference surface: ./data/cortex_surf_roi_2.mdl
+            Base name: c_5r7_2
+            Number of iterations: 100
+            Octants to improve in iteration 0: 52
+            Octants to improve in iteration 1: 27
+            Octants to improve in iteration 2: 11
+            Octants to improve in iteration 3: 6
+            Octants to improve in iteration 4: 7
+            Octants to improve in iteration 5: 3
+            No more Octants to improve in iteration 6.
+\end{lstlisting}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/c_5r7_01.png}
+        \caption{Representación corteza cerebral con refinamiento en lóbulo frontal.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/c_5r7_2_01.png}
+        \caption{Representación corteza cerebral con refinamiento en lóbulo occipital.}
+    \end{subfigure}
+    \caption{ Diferentes localidades de refinamiento en corteza cerebral. }
+    Fuente: Elaboración propia.
+    \label{fig:c_5r7_all}
+\end{figure}
+
+
+\subsubsection{Malla de Moai}
+
+La ejecución del algoritmo en la malla de Moai para los casos con refinamiento inferior y superior, como podemos ver en \autoref{out:moai_1} y \autoref{out:moai_2}, respectivamente. En ambos casos se logró una malla válida en aproximadamente 5 iteraciones, pero a diferencia de los casos anteriores, como la corteza cerebral y la zona inferior en el Moai, la malla de Moai en la zona superior, se comporta aumentando en un grado menor la cantidad de Octantes por refinar entre la primera y segunda iteración, luego disminuye la cantidad de Octantes manteniendo el aparente modelo exponencial.
+
+\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de Moai con zona a refinar en zona inferior.\\ Fuente: Elaboración propia.},label={out:moai_1},float,floatplacement=H]
+input  >    ./script.sh 0.0 ./data/moai.mdl ./data/moai_surf_roi.mdl moai_5r7 100
+output >    Threshold: 0.0
+            Main surface: ./data/moai.mdl
+            Reference surface: ./data/moai_surf_roi.mdl
+            Base name: moai_5r7
+            Octants to improve in iteration 0: 22
+            Octants to improve in iteration 1: 5
+            Octants to improve in iteration 2: 2
+            Octants to improve in iteration 3: 1
+            Octants to improve in iteration 4: 1
+            No more Octants to improve in iteration 5.
+\end{lstlisting}
+
+
+\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de Moai con zona a refinar en zona superior.\\ Fuente: Elaboración propia.},label={out:moai_2}, float,floatplacement=H]
+input  >    ./script.sh 0.0 ./data/moai.mdl ./data/moai_surf_roi_2.mdl moai_5r7_2 100
+output >    Threshold: 0.0
+            Main surface: ./data/moai.mdl
+            Reference surface: ./data/moai_surf_roi_2.mdl
+            Base name: moai_5r7_2
+            Number of iterations: 100
+            Octants to improve in iteration 0: 10
+            Octants to improve in iteration 1: 12
+            Octants to improve in iteration 2: 9
+            Octants to improve in iteration 3: 3
+            No more Octants to improve in iteration 4.
+\end{lstlisting}
+
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/moai_5r7_01.png}
+        \caption{Representación Moai con refinamiento en zona inferior.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/moai_5r7_2_01.png}
+        \caption{ Representación Moai con refinamiento en zona superior. }
+    \end{subfigure}
+    \caption{ Diferentes localidades de refinamiento en Moai. }
+    Fuente: Elaboración propia.
+    \label{fig:moai_5r7_all}
+\end{figure}
+
+\subsubsection{Malla de paladar}
+
+
+\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de Moai con zona a refinar en zona superior.\\ Fuente: Elaboración propia.},label={out:palate_1}, float,floatplacement=H]
+input  >    ./script.sh 0.0 ./data/palate.mdl ./data/palate_surf_roi.mdl palate_5r7 100
+output >    Threshold: 0.0
+            Main surface: ./data/palate.mdl
+            Reference surface: ./data/palate_surf_roi.mdl
+            Base name: palate_5r7
+            Number of iterations: 100
+            Octants to improve in iteration 0: 33
+            Octants to improve in iteration 1: 17
+            Octants to improve in iteration 2: 6
+            Octants to improve in iteration 3: 1
+            Octants to improve in iteration 4: 1
+            No more Octants to improve in iteration 5.
+\end{lstlisting}
+
+
+
+En el caso de la malla de paladar, podemos 
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/palate_5r7_01.png}
+        % \caption{Representación Paladar con refinamiento en zona superior.}
+    \end{subfigure}
+    \caption{ Representación Paladar con refinamiento en zona superior. }
+    Fuente: Elaboración propia.
+    \label{fig:palate_5r7_all}
+\end{figure}
+
+\subsubsection{Malla de coxis}
+
+
+\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de Moai con zona a refinar en zona superior.\\ Fuente: Elaboración propia.},label={out:moai_2}, float,floatplacement=H]
+input  >    ./script.sh 0.0 ./data/palate.mdl ./data/palate_surf_roi.mdl palate_5r7 100
+output >    Threshold: 0.0
+            Main surface: ./data/palate.mdl
+            Reference surface: ./data/palate_surf_roi.mdl
+            Base name: palate_5r7
+            Number of iterations: 100
+            Octants to improve in iteration 0: 33
+            Octants to improve in iteration 1: 17
+            Octants to improve in iteration 2: 6
+            Octants to improve in iteration 3: 1
+            Octants to improve in iteration 4: 1
+            No more Octants to improve in iteration 5.
+\end{lstlisting}
+
+
+
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/coxis_8r9_01.png}
+    \end{subfigure}
+    \caption{ Representación Coxis sin refinamiento local. }
+    Fuente: Elaboración propia.
+    \label{fig:coxis_8r9_all}
+\end{figure}
+
+
+
+\subsection{Análisis de los resultados}
+
+\subsubsection{Análisis de la tasa de reducción de la cantidad de Octantes por refinar en cada iteración }
+
+\begin{itemize}
+    \item Definición de una secuencia exponencial.
+
+    Para determinar si la secuencia de números $27, 7, 2, 1$ se reduce de manera exponencial, es esencial revisar cómo se comportan las reducciones entre cada par de números consecutivos y si sigue un patrón consistente con la reducción exponencial.
+
+    Una reducción exponencial sigue la forma:
+    $$y = a \cdot r^n$$
+     
+    donde:
+    
+    \begin{itemize}
+        \item y es el valor en la n-ésima posición.
+        \item a es el valor inicial (en nuestro caso, 21).
+        \item r es la razón de reducción (un valor menor a 1).
+        \item n es la posición en la secuencia.
+    \end{itemize}
+    
+    Para verificar si una secuencia sigue una reducción exponencial, podemos examinar si el cociente entre cada par de términos consecutivos es aproximadamente constante. Es decir, si $\frac{y_{n+1}}{y_n}$ es constante.
+
+    \item Cálculo del cociente entre términos consecutivos
+
+    Calculamos el cociente entre cada par de números consecutivos en la secuencia:
+
+    \begin{itemize}
+        \item  Entre 21 y 7: $\frac{7}{21} \approx 0.333$
+        \item  Entre 7 y 2: $\frac{2}{7} \approx 0.286$
+        \item  Entre 2 y 1: $\frac{1}{2} = 0.5$
+    \end{itemize}
+
+    \item Evaluación de los Cocientes.
+
+    Para una reducción exponencial pura, los cocientes entre términos consecutivos deberían ser aproximadamente iguales. En este caso, los valores no son iguales, pero están en un rango que sugiere una tendencia decreciente. Sin embargo, la variabilidad entre los cocientes sugiere que la secuencia no se reduce de manera perfectamente exponencial con una sola razón común.
+
+    \item Ajuste a un modelo exponencial
+
+    Podemos intentar ajustar un modelo exponencial para ver si se adapta razonablemente a los datos:
+    Si consideramos $a  = 21$(valor inicial), podemos buscar una razón $r$ que mejor ajuste la reducción de la secuencia.
+    
+    Para esto, podemos resolver la ecuación $$y = 21 \cdot r^n$$ para cada $n$ y encontrar el $r$ promedio que mejor describa la secuencia. Aunque los cocientes no son constantes, podemos ver si hay un $r$ promedio que se ajuste razonablemente.
+
+    \item Cálculo promedio geométrico
+
+    El promedio geométrico de los cocientes es una manera de obtener una aproximación de la razón $r$:
+
+        $$ r \approx \sqrt[3]{ \left( \frac{7}{21} \times \frac{2}{7} \times \frac{1}{2} \right) }$$
+
+    Calculamos el valor:
+
+    $$ r \approx \sqrt[3]{0.333 \times 0.286 \times 0.5 \approx 0.36} $$
+
+    Este $r$ promedio indica que la secuencia puede aproximarse por una reducción exponencial con una razón cercana a $0.36$.
+
+    Gráficamente podemos ver el ajuste del comportamiento de la cantidad de Octantes por refinar en cada iteración y los datos reales en \autoref{fig:exponential_fit}. Si bien este ajuste funciona muy bien para este caso, no podemos concluir que este algoritmo funcionará de esta manera para otros casos.
+
+    % \begin{figure}[!ht]
+    % \centering
+    % \includegraphics[width=1.0\textwidth]{figures/analysis/exponential_fit.png}
+    % \caption{ Ajuste exponencial de la cantidad de Octantes por refinar en cada iteración sobre los valores reales.\\  Fuente: Elaboración propia.}
+    % \label{fig:exponential_fit}
+    % \end{figure}
+\end{itemize}
+
+\subsection{Resultados}
+
+Para analizar el comportamiento del algoritmo, nos enfocaremos en ajustar la cantidad de iteraciones a algún modelo conocido, entregar una hipótesis sobre la anomalía en la malla del coxis, comparar con los resultados entregados en \cite{daines2018repairing}.
+
+\subsubsection{Ajuste de la cantidad de iteraciones}
+
+El algoritmo propuesto se comporta de muy buena manera para todas las mallas a excepción de la malla que representa el coxis, cuando logra converger a una malla válida, es posible reducir considerablemente la cantidad de Octantes por refinar en muy pocas iteraciones, a simple vista se podría entregar una hipótesis sobre el comportamiento de la reducción en la cantidad de Octantes por refinar en cada iteración.
+
+Para esto, se construyó la siguiente tabla con el número de Octantes por refinar en cada iteración para las diferentes mallas, \autoref{table:num_octs_ref}.
+
+
+
+\begin{table}[!ht]
+\begin{tabular}{|lllllll|}
+\hline
+\multicolumn{7}{|c|}{Número de Octantes por refinar en cada iteración}                                                                                                                                                                                                                     \\ \hline
+\multicolumn{1}{|l|}{\textbf{N° Iteración}} & \multicolumn{1}{l|}{\textbf{cortex\_5r7}} & \multicolumn{1}{l|}{\textbf{cortex\_5r7\_2}} & \multicolumn{1}{l|}{\textbf{moai\_5r7}} & \multicolumn{1}{l|}{\textbf{moai\_5r7}} & \multicolumn{1}{l|}{\textbf{palate\_6r7}} & \textbf{coxis\_7} \\ \hline
+\multicolumn{1}{|l|}{1}                     & \multicolumn{1}{l|}{21}                   & \multicolumn{1}{l|}{52}                      & \multicolumn{1}{l|}{22}                 & \multicolumn{1}{l|}{10}                 & \multicolumn{1}{l|}{33}                   & 211               \\ \hline
+\multicolumn{1}{|l|}{2}                     & \multicolumn{1}{l|}{7}                    & \multicolumn{1}{l|}{27}                      & \multicolumn{1}{l|}{5}                  & \multicolumn{1}{l|}{12}                 & \multicolumn{1}{l|}{17}                   & 488               \\ \hline
+\multicolumn{1}{|l|}{3}                     & \multicolumn{1}{l|}{2}                    & \multicolumn{1}{l|}{11}                      & \multicolumn{1}{l|}{2}                  & \multicolumn{1}{l|}{9}                  & \multicolumn{1}{l|}{6}                    & 341               \\ \hline
+\multicolumn{1}{|l|}{4}                     & \multicolumn{1}{l|}{1}                    & \multicolumn{1}{l|}{6}                       & \multicolumn{1}{l|}{1}                  & \multicolumn{1}{l|}{3}                  & \multicolumn{1}{l|}{1}                    & 463               \\ \hline
+\multicolumn{1}{|l|}{5}                     & \multicolumn{1}{l|}{0}                    & \multicolumn{1}{l|}{7}                       & \multicolumn{1}{l|}{1}                  & \multicolumn{1}{l|}{0}                  & \multicolumn{1}{l|}{1}                    & 528               \\ \hline
+\multicolumn{1}{|l|}{6}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{3}                       & \multicolumn{1}{l|}{0}                  & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{0}                    & 567               \\ \hline
+\multicolumn{1}{|l|}{7}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{0}                       & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 665               \\ \hline
+\multicolumn{1}{|l|}{8}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 767               \\ \hline
+\multicolumn{1}{|l|}{9}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 887               \\ \hline
+\multicolumn{1}{|l|}{10}                    & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 1000              \\ \hline
+\end{tabular}
+\caption{asd}
+\label{table:num_octs_ref}
+\end{table}
+
+
+Luego, se analizará la cantidad de Octantes por refinar o Elementos de mala calidad en cada iteración.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/c_5r7_01.png}
+        \caption{Zoom out de sección extraída.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/c_5r7_2_01.png}
+        \caption{Zona extraída con elementos de mala calidad resaltados.}
+    \end{subfigure}
+    \caption{ Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }
+    Fuente: Elaboración propia.
+    \label{fig:zoom_cortex_surf}
+\end{figure}
+
+
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/coxis_8r9_01.png}
+        \caption{Zoom out de sección extraída.}
+    \end{subfigure}
+    \caption{ Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }
+    Fuente: Elaboración propia.
+    \label{fig:zoom_cortex_surf}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/moai_5r7_01.png}
+        \caption{Zoom out de sección extraída.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/moai_5r7_2_01.png}
+        \caption{Zona extraída con elementos de mala calidad resaltados.}
+    \end{subfigure}
+    \caption{ Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }
+    Fuente: Elaboración propia.
+    \label{fig:zoom_cortex_surf}
+\end{figure}
+
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/meshes/palate_5r7_01.png}
+        \caption{Zoom out de sección extraída.}
+    \end{subfigure}
+    \caption{ Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }
+    Fuente: Elaboración propia.
+    \label{fig:zoom_cortex_surf}
+\end{figure}

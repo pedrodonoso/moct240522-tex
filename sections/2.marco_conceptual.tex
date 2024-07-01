@@ -1,0 +1,289 @@
+\secnumbersection{Marco conceptual}
+
+Los algoritmos basados en la técnica Octree deben gestionar el problema mencionado en la sección anterior, la representación incorrecta de los límites del dominio, por sobre todo en dominios concavos.
+
+Un octante límite es aquel que intersecta la frontera de $\Omega$, puede presentar nodos dentro y fuera del dominio $\Omega$, los nodos que estén justo en la frontera son considerados nodos externos.
+
+Cuando el octante límite contiene sólo un hexaedro, puede emplearse un patrón de superficie \cite{Gonzalez2014}. Un patrón de superficie es un conjunto de diferentes tipos de elementos que sustituyen al hexaedro para reducir las posibilidades de producir elementos inválidos. Dependiendo de la configuración de nodos internos/externos del octante, se empleará un patrón distinto.
+
+En \cite{lobos2015mixed} se describe una técnica de mallado que incluye patrones de superficie y transición. Esta técnica permite definir diversos $RL$ para $\Omega$. 
+
+En \cite{daines2018repairing} se detectó que este algoritmo puede producir algunos elementos no válidos cuando las transiciones entre regiones de diferente $RL$ se presentan en el borde. Se trata de un octante que debe llenar ambas regiones, gestionar una transición y, al mismo tiempo lograr la representación del borde. 
+
+\subsection{Medida de calidad para elementos en Mallas Mixtas}
+
+En general, la calidad de un elemento geométrico viene determinada por el nivel de deformación en comparación con la representación geométrica más regular o perfecta del elemento.  
+
+
+% Para el hexaedro, el tetraedro y la cuña se utiliza la variación regular. Por desgracia no existe una variación regula para todas las pirámides. 
+
+
+Existen múltiples medidas de calidad de los elementos geométricos utilizados, cada una de las cuales mide distintos tipos de deformaciones.
+Una medida utilizada habitualmente es la relación de aspecto ($RA$). En general, el $AR$ de un elemento es la relación entre su borde más corto y su borde más largo. Existen diferentes variaciones que utlizan otras distancias del elemento. Las longitudes utilizadas para el $AR$ en este trabajo y el de \cite{daines2018repairing} se describen a continuación:
+
+\begin{itemize}
+    \item Pirámide: Distancias entre centros de aristas opuestas en la base y la altura de la pirámide.
+    \item Cuña: Distancias entre los centros de las aristas opuestas en las caras del cuadrilátero y las distancias entre el centro de las caras del cuadrilátero y el centro de la arista opuesta.
+    \item Hexaedro: Distanias entre centros de caras opuestas.
+\end{itemize}
+
+Otra variación significativa es el Aspecto Ratio Gamma (ARG). El $ARG$ penaliza más las deformaciones de un tetraedro en comparación con otras variaciones del $AR$.
+Para medir la distorsión de un nodo en contraste con su vecino podemos utilizar la \textit{Jacobiana}. Siendo $J_a$ el Jacobiano del nodo $a$ y $d_i$ el vector del nodo $a$ al nodo $i$. El jacobiano se puede calcular realizando el producto punto entre la distancia nodal del vector altura del tetraedro y el producto cruz de las distancias nodales de los vectores basales.
+
+El problema del Jacobiano es sus dependencias a las distancias entre nodos y a la ortogonalidad entre sus aristas, con respecto a la primera dependencia dos elementos con los mismos ángulos internos pero tamaños distintos de aristas obtienen distintos valores para esta medida de distorsión y sobre la segunda, la medida de calidad no se puede extender a todos los tipos de elementos geométricos que se encontrarán en la malla.
+
+Por tanto, para suplir la dependencia a las distancias se utiliza el Jacobiano Escalado, Scaled Jacobian ($J_s$).
+Esta medida de calidad normaliza los vectores del tetraedro, así sólo dependerá de la ortogonalidad de sus aristas.
+El $J_S$ de un hexaedro es su peor $J_S$ de sus nodos. En \cite{daines2018repairing} se define el rango de aceptación de la calidad de los elementos, un $J_S < 0$ implica que el elemento está invertido, $J_S \geq 0,2$ significa una buena calidad y un hexaedro perfecto cuando $J_S = 1$. Los elementos con $J_S \in [0, 0,2]$ se denominan cuestionables para los cálculos de \cite{shepherd-2008}
+
+Por otra parte, para suplir la deficiencia en su dependencia a la ortogonalidad de sus aristas, se usará un Jacobiano para cada uno de los tipos de elementos que encontraremos en la malla, esta medida de calidad es el Jacobiano Escalado Normalizado del Elemento, más adelante denotado como $J_{ENS}$,  Element Normalized Scaled Jacobian. 
+
+El indice $J_{ENS}$ calcula el $J_s$ del elemento perfecto $K^e$, donde $e$ denota el elemento correspondiente. Los valores para los distintos elementos utilizados en este trabajo para las mallas Octree mixtas se encuentran en la siguiente Ecuación \ref{eq:1}
+
+\begin{equation} \label{eq:1}
+    \begin{aligned}
+    K^T &= \frac{\sqrt{2}}{2} \longrightarrow \text{Tetraedro} \\
+    K^P &= \frac{\sqrt{6}}{3} \longrightarrow \text{Pirámide} \\
+    K^W &= \frac{\sqrt{3}}{2} \longrightarrow \text{Cuña}
+    \end{aligned}
+\end{equation}
+
+De esta forma, como se vió en \cite{daines2018repairing}, con ayuda de estas constantes podemos calcular el $J_{ENS}$ de cualquier nodo de un elemento sustituyendo el valor correspondiente en la Ec. \ref{eq:2}. De forma similar a $J_S$ para realizar el cálculo de $J_{ENS}$ utilizamos la Ec. \ref{eq:3}, donde $i$ son los nodos del elemento $e$. y $J^e_{ENS}$ es su $J_{ENS}$.
+
+\begin{equation} \label{eq:2}
+    \begin{aligned}
+J^n_{ENS} &=    
+\left\{
+\begin{array}{rl}
+     ( 1 + K^e ) - J_S, & \qquad J_S > k^e
+  \\ Js/K^e, & \qquad -k^e \leq J_S \leq K^e
+  \\ -( 1 + K^e ) - J_S, & \qquad J_S < -k^e
+\end{array}
+\right.
+    \end{aligned}
+\end{equation}
+
+
+\begin{equation} \label{eq:3}
+    \begin{aligned}
+J^e_{ENS} &=    
+\left\{
+\begin{array}{ll}
+     \text{min}\{J^i_{ENS}\}, & \qquad \forall i, J^i_{ENS} > 0
+  \\ \text{max}\{J^i_{ENS}\} : J^i_{ENS} < 0, & \qquad \exists i, J^i_{ENS} < 0
+\end{array}
+\right.
+    \end{aligned}
+\end{equation}
+
+% mallas octree
+% elementos invalidos
+% patrones de transición
+% explicación del algoritimo 
+% explicación de la tecnica de generación de mallas
+% explicación de la tecnica de refinamiento
+% explicacción de la tecnica de reparación
+% explicación de la tecnica de selección del elemento invalido
+% explicación de la herramienta usada
+
+
+% Se debe describir la base conceptual o fundamentos en los que se basa tu memoria, es decir, todos los conceptos técnicos, metodologías, herramientas, etc. que están involucradas en la solución propuesta. En el fondo esta parte permite precisar y delimitar el problema, estableciendo definiciones para unificar conceptos y lenguaje y fijar relaciones con otros trabajos o soluciones encontradas por otros al mismo problema evitando así plagios o repetir errores ya conocidos o abordados por otros.
+
+% En esta parte es importante relacionar estos conceptos con la memoria y es fundamental utilizar referencias bibliográficas (o de la web) recientes, por ejemplo \cite{gettelfinger2004will}.
+
+\subsection{Malla inicial}
+
+Para comprender de mejor forma el problema buscaremos un entorno donde existan elementos inválidos, para ello procederemos a estudiar la localidad de los elementos de mala calidad, entonces se generará una malla que llamaremos la \textit{malla inicial}.
+
+Esta será la representación de un cerebro a un nivel 5 de refinamiento en general y se le aplicará un refinamiento de nivel 7 a una superficie prismática regular inserta en la parte frontal del cerebro. Como se muestra en la representación de puntos de la malla del cerebro y representación alámbrica de la superficie prismática de la figura \ref{fig:cortex_surf}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/bad_quality_zone/cortex_surf.png}
+        \caption{Perspectiva lateral}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=1.0\textwidth]{figures/bad_quality_zone/cortex_surf_points.png}
+        \caption{Perspectiva frontal}
+    \end{subfigure}
+    \caption{  Muestra frontal y lateral de la malla inicial con refinamiento global de nivel 5 y refinamiento en superficie prismática regular de nivel 7.\\ Fuente: Elaboración propia.}
+    \label{fig:cortex_surf}
+\end{figure}
+
+\subsection{Herramientas}
+
+En este trabajo se utilizarán algunas herramientas construidas por la comunidad, un software para visualización, scripts en Bash y Python para la ejecución de la solución y el análisis de los resultados.
+
+En esta sección se explicará la estructura necesaria para comprender la propuesta de solución, definición y usos de las otras herramientas.
+
+\subsubsection{Mixed-element mesh generator} \label{section:mesh_generator_definition}
+
+El generador de mallas de elementos mixtos \cite{lobos2015mixed} es una herramienta creada para facilitar la generación de mallas, a través de la linea de comandos se puede generar mallas con superficies de refinamiento en diferentes niveles, exportar en diversos formatos para visualización, iniciar con una malla refinada y refinar octantes entregados.
+Este software recibe modelos de datos de mallas en formato \textit{mdl}.
+
+\begin{lstlisting}[style=Console,caption={Opciones de mesher generator.\\ Fuente: Elaboración propia.}]
+input  >    ./mesher -h
+output >    use:  ./mesher [-d] input.mdl [-o] input.off [-u] output
+                    [-c] volume_mesh.oct (octant mesh to start from)
+                    [-s] ref_level [-a] ref_level [-b] file.reg 
+                    [-l] list_file.txt [-r] input_surface rl [-g] [-v]
+            where:
+              one of the parameters must be an input surface mesh in
+              mdl or off format. If output name is not provided it
+              will be saved in input_name.m3d. Options:
+                -s Refine octants intersecting the input surface.
+                   Parameter ref_level is the refinement level
+                -a Refine all elements in the input domain.
+                   Parameter ref_level is the refinement level
+                -b Refine block regions provided in file file.reg
+                -l Refine elements provided in the file by their index
+                -r Refine surface region. Will refine all the elements
+                   in the provided input_surface at level rl
+                -g save output mesh in GetFem format (gmf)
+                -v save output mesh in VTK ASCII format (vtk)
+                -i save output mesh in MVM ASCII format (mvm)
+                -m save output mesh in M3D ASCII format (m3d)
+\end{lstlisting}
+
+Para ejemplificar, en la figura \autoref{out:mesher_example} se muestra el input de la herramienta para la generación de la \textit{malla inicial}, se define la corteza cerebral, `./data/cortex.mdl`, con nivel 5 de refinamiento y superficie rectangular a refinar, `./data/cortex\_surf\_roi.mdl`, con nivel 7 de refinamiento, nombre de archivo para exportación `c\_5r7`, exportación en formato m3d y VTK, para visualización en Geomview o Paraview respectivamente.
+
+\begin{lstlisting}[language=bash,caption={Input mesher generator para la generación de la malla inicial.\\ Fuente: Elaboración propia.},label={out:mesher_example}]
+input >   ./mesher -d ./data/cortex.mdl -s 5 -r ./data/cortex_surf_roi.mdl 7 -u c_5r7 -m -v
+\end{lstlisting}
+
+\subsubsection{Mixed-element $J_{ENS}$ stadistics generator}
+
+El generador de estadísticas $J_{ENS}$ para mallas Octree de elementos mixtos es una herramienta que facilita la validación de mallas, creada por la comunidad y liderado por el profesor Claudio Lobos. Puede generar histogramas con diferentes índices como Scaled Jacobian, Normalized Scaled Jacobian, Aspect Ratio, etc. 
+En este trabajo lo utilizaremos principalmente para validar cada malla generada enfocándonos sólo en obtener la frecuencia del incide $J_{ENS}$. Esto es un histograma con la frecuencia de todos los elementos de la malla con $J_{ENS} \in \{-\infty , 1\}$, como se muestra en la figura \autoref{out:jens_output}.
+
+\begin{lstlisting}[style=console,caption={Opciones de jens calculator. \\ Fuente: Elaboración propia.}]
+input   >   ./jens -h
+output  >   use: ./jacobian -option input.m3d
+            options:
+            -s : Scaled Jacobian statistics
+            -e : Element Normalized Scaled Jacobian statistics
+            -j : List Jens of each Element Jens [Js]
+            -a : List Aspect Ratio for each element
+            -l : List Jens of each node for each element
+\end{lstlisting}
+
+
+\begin{lstlisting}[style=console,label={out:jens_output_c_5r7_0},caption={Estadísticas Jens para malla inicial, muestra una lista de frecuencias para diferentes cotas superiores para la calidad Jens encontrada en la malla.\\ Fuente: Elaboración propia.}]
+input   >   ./jens -e ./src/c_5r7.mdl
+output  >   negative: 27
+            <0.0333 : 4
+            <0.05   :5
+            <0.1    :13
+            <0.15   :54
+            <0.2    :219
+            <0.25   :356
+            <0.3    :9918
+            <0.35   :8431
+            <0.4    :3386
+            <0.45   :6641
+            <0.5    :2341
+            <0.55   :16891
+            <0.6    :2659
+            <0.65   :2689
+            <0.7    :2038
+            <0.75   :4872
+            <0.8    :1108
+            <0.85   :2477
+            <0.9    :457
+            <0.95   :408
+            <1      :108662
+            total: 173656
+            worst quality -0.792707
+            average quality 0.806127
+\end{lstlisting}
+
+
+\subsubsection{ParaView}
+
+Paraview es un software open-source multiplataforma que facilita la \\ visualización de representaciones en 3D. Presenta una interfaz interactiva, nos ayudará analizar visualmente el estado de la malla en todo momento. Se utilizará el formato con extensión \textit{vtk} para visualizar mallas en esta plataforma.
+
+Este software presenta diferentes secciones que nos ayudarán a analizar cada malla generada, la sección marcada con el número 1 en \autoref{fig:paraview_all}, se presentan todas las mallas que se representarán gráficamente en la sección 2. Existe un panel de herramientas en la sección 3 que nos ayudará a marcar/desmarcar elementos o puntos en el panel 2 que se verán reflejados e identificados en el recuadro 5.
+En la sección 4 podremos cambiar la forma de visualizar cada representación, esto nos ayudará a identificar elementos, identificar si una malla es válida en su construcción, etc.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/paraview/paraview_all.png}
+    \caption{ Interfaz de software Paraview, se muestra una sección de la malla inicial con dos elementos seleccionados.\\  Fuente: Elaboración propia.}
+    \label{fig:paraview_all}
+\end{figure}
+
+\subsection{Estructura de datos}
+
+En la construcción de la solución existen diversas estructuras de datos que se van complejizando a medida que se avanza en el algoritmo.
+
+En esta sección sólo se explicará la estructura de datos elemental y de forma general. 
+
+Como se definió anteriormente, una malla Octree se divide en octantes, cada uno de estos octantes contiene una unidad más pequeña que se le denominó Elementos, definidos en \cite{Gonzalez2014} como se mencionaba al comienzo de esta sección, donde se definen patrones de transición a estos Elementos \autoref{fig:basics_elements}.  Luego, cada uno de estos Elementos está constituido por Puntos, que es la unidad más pequeña.
+
+Para ejemplificar.
+
+\begin{lstlisting}[style=CStyle,caption={Clase Octant.\\ Fuente: Elaboración propia.},label={code:octant_class}]
+#include <vector>
+class Octant
+{
+	public:
+        Octant(vector<unsigned int> &epts, const unsigned short &ref_level,
+    			   const unsigned int &o_id);
+        ...
+        // indice del octante.
+        unsigned int id;
+        // indices de puntos que conforman al octante.
+        vector<unsigned int> points_indexes;
+        // indices de puntos que conforman los elementos 
+        // pertencientes al octante.
+        vector<vector<unsigned int>> sub_elements_points_indexes;
+}
+\end{lstlisting}
+
+
+% Ejemplo Octantes->Elementos->Puntos
+
+\subsubsection{Acercamiento al algoritmo de Mixed-element mesh generator}
+
+Parte importante del software mencionado en la Sección \ref{section:mesh_generator_definition} es la generación de la malla que se define y explica brevemente en \cite{daines2018repairing}.
+
+
+\begin{algorithm}
+\SetKwInOut{KwIn}{Input}
+\SetKwInOut{KwOut}{Output}
+% functions
+\SetKwFunction{generateMesh}{GENERATE\_MESH}
+\SetKwFunction{generateBalancedOctree}{GENERATE\_BALANCED\_OCTREE}
+\SetKwFunction{applyTransitionPatterns}{APPLY\_TRANSITION\_PATTERNS}
+\SetKwFunction{applySurfacePatterns}{APPLY\_SURFACE\_PATTERNS}
+\SetKwFunction{projectOnto}{PROJECT\_ONTO}
+\SetKwFunction{add}{ADD}
+\SetKwFunction{getBoundaryNodes}{GET\_BOUNDARY\_NODES}
+% procedure
+\SetKwProg{myproc}{Procedure}{:}{}
+\KwIn{Refinement level constraints $RLC$, triangular surface mesh \Omega.}
+\KwOut{Volumetric mesh of \Omega that meets $RLC$.}
+\myproc{\generateMesh{RLC, \Omega}}
+{
+    $mesh$ \gets \generateBalancedOctree{RLC,\Omega}\;
+    $mesh$ \gets \applyTransitionPatterns{mesh}\;
+    $bnodes$ \gets \getBoundaryNodes{mesh, \Omega}\;
+    \For{ \textbf{each} $node$ \textbf{in} $bnodes$} {
+        \If{$node \in l$ \textbf{or} ($node$ is \textbf{inside} of \Omega\, \& $node$ is \textbf{close} to \Omega)} {
+            $node$.\projectOnto{\Omega}\;
+        }
+    }
+    $mesh$ \gets \applySurfacePatterns{mesh}\;
+    $bnodes$ \gets \getBoundaryNodes{mesh, \Omega}\;
+    \For{\textbf{each} $node$ \textbf{in} $bnodes$} {
+        \If{$node$ is \textbf{outside} of \Omega} {
+            $node$.\projectOnto{\Omega} \;
+        }
+    }
+    \KwRet mesh\;    
+}
+\caption{Algoritmo de generación de mallas Octree con elementos mixtos y varios niveles de refinamiento.\\ Fuente: \cite{daines2018repairing}}
+\label{alg:propuesta_daines} 
+\end{algorithm}
+
