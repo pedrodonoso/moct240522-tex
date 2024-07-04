@@ -1,0 +1,1886 @@
+This is LuaHBTeX, Version 1.18.1 (MiKTeX 24.4) (format=lualatex 2024.7.3)  4 JUL 2024 18:13
+ restricted system commands enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-05-27>
+Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
+ollection.
+luaotfload | conf : Root cache directory is "C:/Users/pedro/AppData/Local/MiKTeX
+/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
+olved path "D:/Programas/Miktex/tex/luatex/luaotfload/fontloader-2023-12-28.lua"
+.
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.134
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "C:/Users/pedro/AppData/Local/MiKTeX
+/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (D:/Programas/Miktex/te
+x/latex/base/article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(D:/Programas/Miktex/tex/latex/base/size12.clo
+File: size12.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from C:/Users/pedro/AppData/Local/M
+iKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count192
+\c@section=\count193
+\c@subsection=\count194
+\c@subsubsection=\count195
+\c@paragraph=\count196
+\c@subparagraph=\count197
+\c@figure=\count198
+\c@table=\count199
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen140
+)
+(D:/Programas/Miktex/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(D:/Programas/Miktex/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(D:/Programas/Miktex/tex/latex/graphics/graphics.sty
+Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(D:/Programas/Miktex/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(D:/Programas/Miktex/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 106.
+
+(D:/Programas/Miktex/tex/latex/graphics-def/luatex.def
+File: luatex.def 2024/04/13 v1.2e Graphics/color driver for luatex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+)
+(D:/Programas/Miktex/tex/generic/babel/babel.sty
+Package: babel 2024/06/02 v24.6 The Babel package
+
+(D:/Programas/Miktex/tex/generic/babel/luababel.def
+\bbl@readstream=\read2
+\l@afrikaans=\language2
+Package babel Info: Non-standard hyphenation setup on input line 118.
+\l@ancientgreek=\language3
+\l@armenian=\language4
+\l@assamese=\language5
+\l@basque=\language6
+\l@belarusian=\language7
+\l@bengali=\language8
+\l@bokmal=\language9
+\l@bulgarian=\language10
+\l@catalan=\language11
+\l@churchslavonic=\language12
+\l@classiclatin=\language13
+\l@coptic=\language14
+\l@croatian=\language15
+\l@czech=\language16
+\l@danish=\language17
+\l@dutch=\language18
+\l@esperanto=\language19
+\l@estonian=\language20
+\l@ethiopic=\language21
+\l@finnish=\language22
+\l@french=\language23
+\l@friulan=\language24
+\l@galician=\language25
+\l@georgian=\language26
+\l@german=\language27
+\l@greek=\language28
+\l@gujarati=\language29
+\l@hindi=\language30
+\l@hungarian=\language31
+\l@icelandic=\language32
+\l@indonesian=\language33
+\l@interlingua=\language34
+\l@irish=\language35
+\l@italian=\language36
+\l@kannada=\language37
+\l@kurmanji=\language38
+\l@latin=\language39
+\l@latvian=\language40
+\l@lithuanian=\language41
+\l@liturgicallatin=\language42
+\l@macedonian=\language43
+\l@malayalam=\language44
+\l@marathi=\language45
+\l@mongolian=\language46
+\l@mongolianlmc=\language47
+\l@monogreek=\language48
+\l@ngerman=\language49
+\l@nynorsk=\language50
+\l@occitan=\language51
+\l@oriya=\language52
+\l@pali=\language53
+\l@panjabi=\language54
+\l@piedmontese=\language55
+\l@polish=\language56
+\l@portuguese=\language57
+\l@romanian=\language58
+\l@romansh=\language59
+\l@russian=\language60
+\l@sanskrit=\language61
+\l@serbian=\language62
+\l@serbianc=\language63
+\l@slovak=\language64
+\l@slovenian=\language65
+\l@spanish=\language66
+\l@swedish=\language67
+\l@swissgerman=\language68
+\l@tamil=\language69
+\l@telugu=\language70
+\l@thai=\language71
+\l@turkish=\language72
+\l@turkmen=\language73
+\l@ukenglish=\language74
+\l@ukrainian=\language75
+\l@uppersorbian=\language76
+\l@usenglishmax=\language77
+\l@welsh=\language78
+\babelcatcodetablenum=\catcodetable14
+\bbl@pattcodes=\catcodetable15
+)
+\babel@savecnt=\count266
+\U@D=\dimen143
+\l@unhyphenated=\language79
+
+(D:/Programas/Miktex/tex/generic/babel/luababel.def
+\bbl@attr@locale=\attribute4
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+(D:/Programas/Miktex/tex/latex/arabi/bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(D:/Programas/Miktex/tex/latex/babel-spanish/spanish.ldf
+Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
+\es@quottoks=\toks18
+\es@quotdepth=\count267
+Package babel Info: Making " an active character on input line 570.
+Package babel Info: Making . an active character on input line 675.
+Package babel Info: Making < an active character on input line 722.
+Package babel Info: Making > an active character on input line 722.
+
+(D:/Programas/Miktex/tex/generic/hyph-utf8/loadhyph/loadhyph-es.tex
+UTF-8 Spanish hyphenation patterns
+(D:/Programas/Miktex/tex/generic/hyph-utf8/patterns/tex/hyph-es.tex))))
+(D:/Programas/Miktex/tex/generic/babel/locale/es/babel-spanish.tex
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 11.
+)
+(D:/Programas/Miktex/tex/latex/fontspec/fontspec.sty
+(D:/Programas/Miktex/tex/latex/l3packages/xparse/xparse.sty
+(D:/Programas/Miktex/tex/latex/l3kernel/expl3.sty
+Package: expl3 2024-05-27 L3 programming layer (loader) 
+
+(D:/Programas/Miktex/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2024-05-08 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count268
+Inserting `l3color' in `luaotfload.parse_color'.
+\l__pdf_internal_box=\box52
+))
+Package: xparse 2024-05-08 L3 Experimental document command parser
+)
+Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2024/05/11 2.9e Font selection for XeLaTeX and LuaLaTeX
+(D:/Programas/Miktex/tex/latex/fontspec/fontspec-luatex.sty
+Package: fontspec-luatex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaT
+eX
+\l__fontspec_script_int=\count269
+\l__fontspec_language_int=\count270
+\l__fontspec_strnum_int=\count271
+\l__fontspec_tmp_int=\count272
+\l__fontspec_tmpa_int=\count273
+\l__fontspec_tmpb_int=\count274
+\l__fontspec_tmpc_int=\count275
+\l__fontspec_em_int=\count276
+\l__fontspec_emdef_int=\count277
+\l__fontspec_strong_int=\count278
+\l__fontspec_strongdef_int=\count279
+\l__fontspec_tmpa_dim=\dimen144
+\l__fontspec_tmpb_dim=\dimen145
+\l__fontspec_tmpc_dim=\dimen146
+
+(D:/Programas/Miktex/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(D:/Programas/Miktex/tex/latex/fontspec/fontspec.cfg)))
+luaotfload | cache : Lookup cache loaded from C:/Users/pedro/AppData/Local/MiKTe
+X/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "Carlito Bold/I" (it probably
+(fontspec)             doesn't exist).
+
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script dflt
+ with language dflt
+
+Package fontspec Info: 
+(fontspec)             Font family 'Carlito(0)' created for font 'Carlito'
+(fontspec)             with options [Ligatures=TeX,BoldFont={* Bold}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"name:Carlito:mode=node;script=latn;language=dflt;+tl
+ig;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"name:Carlito
+(fontspec)             Bold:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"name:Carlito/I:mode=node;script=latn;language=dflt;+
+tlig;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"name:Carlito/BI:mode=node;script=latn;language=dflt;
++tlig;"
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "Carlito Italic/B" (it probably
+(fontspec)             doesn't exist).
+
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script dflt
+ with language dflt
+
+Package fontspec Info: 
+(fontspec)             Font family 'Carlito(1)' created for font 'Carlito'
+(fontspec)             with options [Ligatures=TeX,ItalicFont={* Italic}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"name:Carlito:mode=node;script=latn;language=dflt;+tl
+ig;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"name:Carlito/B:mode=node;script=latn;language=dflt;+
+tlig;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"name:Carlito
+(fontspec)             Italic:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"name:Carlito/BI:mode=node;script=latn;language=dflt;
++tlig;"
+
+
+(D:/Programas/Miktex/tex/latex/anyfontsize/anyfontsize.sty
+Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
+)
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script dflt
+ with language dflt
+
+Package fontspec Info: 
+(fontspec)             Font family 'Carlito(2)' created for font 'Carlito'
+(fontspec)             with options [Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"name:Carlito:mode=node;script=latn;language=dflt;+tl
+ig;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"name:Carlito/B:mode=node;script=latn;language=dflt;+
+tlig;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"name:Carlito/I:mode=node;script=latn;language=dflt;+
+tlig;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"name:Carlito/BI:mode=node;script=latn;language=dflt;
++tlig;"
+
+
+(D:/Programas/Miktex/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(D:/Programas/Miktex/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(D:/Programas/Miktex/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count280
+\Gm@cntv=\count281
+\c@Gm@tempcnt=\count282
+\Gm@bindingoffset=\dimen147
+\Gm@wd@mp=\dimen148
+\Gm@odd@mp=\dimen149
+\Gm@even@mp=\dimen150
+\Gm@layoutwidth=\dimen151
+\Gm@layoutheight=\dimen152
+\Gm@layouthoffset=\dimen153
+\Gm@layoutvoffset=\dimen154
+\Gm@dimlist=\toks19
+
+(D:/Programas/Miktex/tex/latex/geometry/geometry.cfg))
+(D:/Programas/Miktex/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2023/10/27 v2.16 Sectioning titles
+\ttl@box=\box53
+\beforetitleunit=\skip51
+\aftertitleunit=\skip52
+\ttl@plus=\dimen155
+\ttl@minus=\dimen156
+\ttl@toksa=\toks20
+\titlewidth=\dimen157
+\titlewidthlast=\dimen158
+\titlewidthfirst=\dimen159
+)
+(D:/Programas/Miktex/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2024/05/23 v2.17q AMS math features
+\@mathmargin=\skip53
+
+For additional information on amsmath, use the `?' option.
+(D:/Programas/Miktex/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(D:/Programas/Miktex/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks21
+\ex@=\dimen160
+))
+(D:/Programas/Miktex/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen161
+)
+(D:/Programas/Miktex/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count283
+LaTeX Info: Redefining \frac on input line 235.
+\uproot@=\count284
+\leftroot@=\count285
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count286
+\DOTSCASE@=\count287
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box54
+\strutbox@=\box55
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen162
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count288
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count289
+\dotsspace@=\muskip17
+\c@parentequation=\count290
+\dspbrk@lvl=\count291
+\tag@help=\toks22
+\row@=\count292
+\column@=\count293
+\maxfields@=\count294
+\andhelp@=\toks23
+\eqnshift@=\dimen163
+\alignsep@=\dimen164
+\tagshift@=\dimen165
+\tagwidth@=\dimen166
+\totwidth@=\dimen167
+\lineht@=\dimen168
+\@envbody=\toks24
+\multlinegap=\skip54
+\multlinetaggap=\skip55
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(D:/Programas/Miktex/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count295
+\float@exts=\toks26
+\float@box=\box56
+\@float@everytoks=\toks27
+\@floatcapt=\box57
+)
+(D:/Programas/Miktex/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-05-23 v7.01i Hypertext links for LaTeX
+
+(D:/Programas/Miktex/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(D:/Programas/Miktex/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(D:/Programas/Miktex/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(D:/Programas/Miktex/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(D:/Programas/Miktex/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(D:/Programas/Miktex/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks28
+))
+(D:/Programas/Miktex/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(D:/Programas/Miktex/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(D:/Programas/Miktex/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(D:/Programas/Miktex/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(D:/Programas/Miktex/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count296
+)
+(D:/Programas/Miktex/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count297
+)
+(D:/Programas/Miktex/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen169
+\Hy@linkcounter=\count298
+\Hy@pagecounter=\count299
+
+(D:/Programas/Miktex/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-05-23 v7.01i Hyperref: PDFDocEncoding definition (HO)
+)
+(D:/Programas/Miktex/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count300
+
+(D:/Programas/Miktex/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-05-23 v7.01i Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4040.
+Package hyperref Info: Hyper figures OFF on input line 4157.
+Package hyperref Info: Link nesting OFF on input line 4162.
+Package hyperref Info: Hyper index ON on input line 4165.
+Package hyperref Info: Plain pages OFF on input line 4172.
+Package hyperref Info: Backreferencing OFF on input line 4177.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4424.
+\c@Hy@tempcnt=\count301
+
+(D:/Programas/Miktex/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen170
+
+(D:/Programas/Miktex/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(D:/Programas/Miktex/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count302
+\Field@Width=\dimen171
+\Fld@charsize=\dimen172
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring ON on input line 6060.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+
+(D:/Programas/Miktex/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count303
+\c@Item=\count304
+\c@Hfootnote=\count305
+)
+Package hyperref Info: Driver (autodetected): hluatex.
+
+(D:/Programas/Miktex/tex/latex/hyperref/hluatex.def
+File: hluatex.def 2024-05-23 v7.01i Hyperref driver for luaTeX
+
+(D:/Programas/Miktex/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count306
+\c@bookmark@seq@number=\count307
+
+(D:/Programas/Miktex/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+
+(D:/Programas/Miktex/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+)
+\Hy@SectionHShift=\skip56
+)
+(D:/Programas/Miktex/tex/latex/lastpage/lastpage.sty
+Package: lastpage 2024/04/27 v2.1a lastpage: 2.09 or 2e? (HMM)
+
+(D:/Programas/Miktex/tex/latex/lastpage/lastpage2e.sty
+Package: lastpage2e 2024/04/27 v2.1a Decide which 2e lastpage version to use (H
+MM)
+
+(D:/Programas/Miktex/tex/latex/lastpage/lastpagemodern.sty
+Package: lastpagemodern 2024-04-27 v2.1a Refers to last page's name (HMM; JPG)
+\c@lastpagecount=\count308
+) 
+)) (D:/Programas/Miktex/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2024/04/23 v4.2 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip57
+\f@nch@O@elh=\skip58
+\f@nch@O@erh=\skip59
+\f@nch@O@olh=\skip60
+\f@nch@O@orh=\skip61
+\f@nch@O@elf=\skip62
+\f@nch@O@erf=\skip63
+\f@nch@O@olf=\skip64
+\f@nch@O@orf=\skip65
+)
+(D:/Programas/Miktex/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has section divisions on input line 51.
+\cftparskip=\skip66
+\cftbeforetoctitleskip=\skip67
+\cftaftertoctitleskip=\skip68
+\cftbeforepartskip=\skip69
+\cftpartnumwidth=\skip70
+\cftpartindent=\skip71
+\cftbeforesecskip=\skip72
+\cftsecindent=\skip73
+\cftsecnumwidth=\skip74
+\cftbeforesubsecskip=\skip75
+\cftsubsecindent=\skip76
+\cftsubsecnumwidth=\skip77
+\cftbeforesubsubsecskip=\skip78
+\cftsubsubsecindent=\skip79
+\cftsubsubsecnumwidth=\skip80
+\cftbeforeparaskip=\skip81
+\cftparaindent=\skip82
+\cftparanumwidth=\skip83
+\cftbeforesubparaskip=\skip84
+\cftsubparaindent=\skip85
+\cftsubparanumwidth=\skip86
+\cftbeforeloftitleskip=\skip87
+\cftafterloftitleskip=\skip88
+\cftbeforefigskip=\skip89
+\cftfigindent=\skip90
+\cftfignumwidth=\skip91
+\c@lofdepth=\count309
+\c@lotdepth=\count310
+\cftbeforelottitleskip=\skip92
+\cftafterlottitleskip=\skip93
+\cftbeforetabskip=\skip94
+\cfttabindent=\skip95
+\cfttabnumwidth=\skip96
+)
+Package hyperref Info: Option `colorlinks' set `false' on input line 169.
+
+(D:/Programas/Miktex/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count311
+
+(D:/Programas/Miktex/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip97
+
+(D:/Programas/Miktex/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count312
+)
+(D:/Programas/Miktex/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(D:/Programas/Miktex/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip98
+\skiplinenumber=\skip99
+\skiprule=\skip100
+\skiphlne=\skip101
+\skiptext=\skip102
+\skiplength=\skip103
+\algomargin=\skip104
+\skipalgocfslide=\skip105
+\algowidth=\dimen173
+\inoutsize=\dimen174
+\inoutindent=\dimen175
+\interspacetitleruled=\dimen176
+\interspacealgoruled=\dimen177
+\interspacetitleboxruled=\dimen178
+\algocf@ruledwidth=\skip106
+\algocf@inoutbox=\box58
+\algocf@inputbox=\box59
+\AlCapSkip=\skip107
+\AlCapHSkip=\skip108
+\algoskipindent=\skip109
+\algocf@nlbox=\box60
+\algocf@hangingbox=\box61
+\algocf@untilbox=\box62
+\algocf@skipuntil=\skip110
+\algocf@capbox=\box63
+\algocf@lcaptionbox=\skip111
+\algoheightruledefault=\skip112
+\algoheightrule=\skip113
+\algotitleheightruledefault=\skip114
+\algotitleheightrule=\skip115
+\c@algocfline=\count313
+\c@algocfproc=\count314
+\c@algocf=\count315
+\algocf@algoframe=\box64
+\algocf@algobox=\box65
+)
+(D:/Programas/Miktex/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+
+(D:/Programas/Miktex/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(D:/Programas/Miktex/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen179
+\captionmargin=\dimen180
+\caption@leftmargin=\dimen181
+\caption@rightmargin=\dimen182
+\caption@width=\dimen183
+\caption@indent=\dimen184
+\caption@parindent=\dimen185
+\caption@hangindent=\dimen186
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count316
+\c@continuedfloat=\count317
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count318
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count319
+)
+(D:/Programas/Miktex/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(D:/Programas/Miktex/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 274.
+
+(D:/Programas/Miktex/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(D:/Programas/Miktex/tex/latex/listings/listings.sty
+\lst@mode=\count320
+\lst@gtempboxa=\box66
+\lst@token=\toks29
+\lst@length=\count321
+\lst@currlwidth=\dimen187
+\lst@column=\count322
+\lst@pos=\count323
+\lst@lostspace=\dimen188
+\lst@width=\dimen189
+\lst@newlines=\count324
+\lst@lineno=\count325
+\lst@maxwidth=\dimen190
+
+(D:/Programas/Miktex/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2024/05/25 1.10b (Carsten Heinz)
+)
+(D:/Programas/Miktex/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
+\c@lstnumber=\count326
+\lst@skipnumbers=\count327
+\lst@framebox=\box67
+)
+(D:/Programas/Miktex/tex/latex/listings/listings.cfg
+File: listings.cfg 2024/05/25 1.10b listings configuration
+))
+Package: listings 2024/05/25 1.10b (Carsten Heinz)
+ (./main.aux
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
+
+
+LaTeX Warning: Label `out:moai_2' multiply defined.
+
+)
+\openout1 = main.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 316.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 3
+16.
+ (D:/Programas/Miktex/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 316.
+LaTeX Font Info:    ... okay on input line 316.
+
+(D:/Programas/Miktex/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count328
+\scratchdimen=\dimen191
+\scratchbox=\box68
+\nofMPsegments=\count329
+\nofMParguments=\count330
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count331
+\MPscratchDim=\dimen192
+\MPnumerator=\count332
+\makeMPintoPDFobject=\count333
+\everyMPtoPDFconversion=\toks31
+) (D:/Programas/Miktex/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(D:/Programas/Miktex/tex/latex/00miktex/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+LaTeX Info: Redefining \. on input line 316.
+LaTeX Info: Redefining \% on input line 316.
+
+Package fontspec Info: 
+(fontspec)             Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 316.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 316.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 316.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 316.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 316.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 316.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 316.
+LaTeX Font Info:    Redeclaring math accent \check on input line 316.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 316.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 316.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 316.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 316.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 316.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 316.
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/Carlito(2)/m/n on input line 316.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 316.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/Carlito(2)/m/n on input line 316.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/Carlito(2)/m/n --> TU/Carlito(2)/m/n on input line 3
+16.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/Carlito(2)/m/it on input line 316.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/Carlito(2)/b/n on input line 316.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 316.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 316.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/Carlito(2)/m/n --> TU/Carlito(2)/b/n on input line 3
+16.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/Carlito(2)/b/it on input line 316.
+
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 316.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 316.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+*geometry* verbose mode - [ preamble ] result:
+* driver: luatex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 443.57848pt, 85.35826pt)
+* v-part:(T,H,B)=(71.13188pt, 638.47984pt, 85.35826pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=443.57848pt
+* \textheight=638.47984pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=49.79231pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring OFF on input line 316.
+(./main.out) (./main.out)
+\@outlinefile=\write3
+
+\openout3 = main.out
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count334
+ (./portadas.tex
+<logo/logo.jpg, id=199, 108.405pt x 82.125pt>
+File: logo/logo.jpg Graphic file (type jpg)
+<use logo/logo.jpg>
+Package luatex.def Info: logo/logo.jpg  used on input line 11.
+(luatex.def)             Requested size: 125.48355pt x 95.04074pt.
+
+
+[1
+
+{C:/Users/pedro/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<./logo/logo.jp
+g>]
+Underfull \hbox (badness 10000) in paragraph at lines 51--59
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 61--322
+
+ []
+
+
+
+
+LaTeX Font Warning: Font shape `TU/Carlito(2)/m/sc' undefined
+(Font)              using `TU/Carlito(2)/m/n' instead on input line 323.
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/m/sc' by 
+(spanish)                faked small caps on input line 323.
+
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.I'
+[1] (./glosario.tex)
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/m/sc' by 
+(spanish)                faked small caps on input line 327.
+
+[2] (./main.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 23 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 24 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 25 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script dflt
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script dflt
+ with language dflt
+
+Package fontspec Info: 
+(fontspec)             Font family 'Carlito(3)' created for font 'Carlito'
+(fontspec)             with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"name:Carlito:mode=node;script=latn;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"name:Carlito/B:mode=node;script=latn;language=dflt;"
+
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"name:Carlito/I:mode=node;script=latn;language=dflt;"
+
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"name:Carlito/BI:mode=node;script=latn;language=dflt;
+"
+
+
+
+LaTeX Font Warning: Font shape `TU/Carlito(2)/b/sc' undefined
+(Font)              using `TU/Carlito(2)/b/n' instead on input line 2.
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/b/sc' by 
+(spanish)                faked small caps on input line 2.
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/b/sc' by 
+(spanish)                faked small caps on input line 3.
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/b/sc' by 
+(spanish)                faked small caps on input line 4.
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/b/sc' by 
+(spanish)                faked small caps on input line 5.
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/b/sc' by 
+(spanish)                faked small caps on input line 6.
+
+
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/m/sc' by 
+(spanish)                faked small caps on input line 37.
+
+[3])
+\tf@toc=\write4
+
+\openout4 = main.toc
+
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/m/sc' by 
+(spanish)                faked small caps on input line 332.
+
+[4] (./main.lof
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lof=\write5
+
+\openout5 = main.lof
+ (./main.lot
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lot=\write6
+
+\openout6 = main.lot
+
+
+
+Package spanish Warning: Replacing `TU/Carlito(2)/m/sc' by 
+(spanish)                faked small caps on input line 341.
+
+[5] (./sections/0.introduccion.tex)
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[1] (./sections/1.definicion_del_problema.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[2]
+<figures/basic-elements.png, id=354, 1129.21875pt x 319.1925pt>
+File: figures/basic-elements.png Graphic file (type png)
+<use figures/basic-elements.png>
+Package luatex.def Info: figures/basic-elements.png  used on input line 33.
+(luatex.def)             Requested size: 421.3982pt x 119.1173pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[3<./figures/basic-elements.png>]
+<figures/divison-process.png, id=368, 1588.93625pt x 237.88875pt>
+File: figures/divison-process.png Graphic file (type png)
+<use figures/divison-process.png>
+Package luatex.def Info: figures/divison-process.png  used on input line 51.
+(luatex.def)             Requested size: 443.57848pt x 66.40874pt.
+<figures/transition_pattern_complete.png, id=372, 941.5175pt x 215.80624pt>
+File: figures/transition_pattern_complete.png Graphic file (type png)
+<use figures/transition_pattern_complete.png>
+Package luatex.def Info: figures/transition_pattern_complete.png  used on input
+ line 68.
+(luatex.def)             Requested size: 443.57848pt x 101.67262pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[4<./figures/divison-process.png>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[5<./figures/transition_pattern_complete.png>])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[6] (./sections/2.marco_conceptual.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[7]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[8]
+<figures/bad_quality_zone/cortex_surf.png, id=424, 1417.295pt x 741.77126pt>
+File: figures/bad_quality_zone/cortex_surf.png Graphic file (type png)
+<use figures/bad_quality_zone/cortex_surf.png>
+Package luatex.def Info: figures/bad_quality_zone/cortex_surf.png  used on inpu
+t line 103.
+(luatex.def)             Requested size: 199.60895pt x 104.46979pt.
+<figures/bad_quality_zone/cortex_surf_points.png, id=425, 1417.295pt x 741.7712
+6pt>
+File: figures/bad_quality_zone/cortex_surf_points.png Graphic file (type png)
+<use figures/bad_quality_zone/cortex_surf_points.png>
+Package luatex.def Info: figures/bad_quality_zone/cortex_surf_points.png  used 
+on input line 107.
+(luatex.def)             Requested size: 199.60895pt x 104.46979pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[9<./figures/bad_quality_zone/cortex_surf.png><./figures/bad_quality_zone/cortex
+_surf_points.png>] (D:/Programas/Miktex/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/05/25 1.10b listings language file
+)
+(D:/Programas/Miktex/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/05/25 1.10b listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 125.
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 132.
+
+Overfull \hbox (211.62819pt too wide) in paragraph at lines 152--153
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][] 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 155.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 155.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 155.
+
+
+LaTeX Warning: Reference `out:jens_output' on page 10 undefined on input line 1
+58.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[10]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[11]
+<figures/paraview/paraview_all.png, id=512, 1155.1155pt x 613.0905pt>
+File: figures/paraview/paraview_all.png Graphic file (type png)
+<use figures/paraview/paraview_all.png>
+Package luatex.def Info: figures/paraview/paraview_all.png  used on input line 
+211.
+(luatex.def)             Requested size: 443.57848pt x 235.43716pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[12<./figures/paraview/paraview_all.png>]
+(D:/Programas/Miktex/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/05/25 1.10b listings language file
+)
+(D:/Programas/Miktex/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/05/25 1.10b listings language file
+)
+(D:/Programas/Miktex/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
+))
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[13]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[14] (./sections/3.propuesta_de_solucion.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[15]
+<figures/labeled_octs/labeled_oct_c_5r7_0.png, id=604, 1398.22375pt x 1132.23pt
+>
+File: figures/labeled_octs/labeled_oct_c_5r7_0.png Graphic file (type png)
+<use figures/labeled_octs/labeled_oct_c_5r7_0.png>
+Package luatex.def Info: figures/labeled_octs/labeled_oct_c_5r7_0.png  used on 
+input line 119.
+(luatex.def)             Requested size: 266.14978pt x 215.50601pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[16]
+<figures/bad_quality_zone/zoom_out_bq_zone.png, id=626, 1398.22375pt x 1132.23p
+t>
+File: figures/bad_quality_zone/zoom_out_bq_zone.png Graphic file (type png)
+<use figures/bad_quality_zone/zoom_out_bq_zone.png>
+Package luatex.def Info: figures/bad_quality_zone/zoom_out_bq_zone.png  used on
+ input line 135.
+(luatex.def)             Requested size: 199.60895pt x 161.62086pt.
+<figures/bad_quality_zone/bq_zone_02.png, id=627, 1398.22375pt x 1132.23pt>
+File: figures/bad_quality_zone/bq_zone_02.png Graphic file (type png)
+<use figures/bad_quality_zone/bq_zone_02.png>
+Package luatex.def Info: figures/bad_quality_zone/bq_zone_02.png  used on input
+ line 139.
+(luatex.def)             Requested size: 199.60895pt x 161.62086pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[17<./figures/labeled_octs/labeled_oct_c_5r7_0.png>]
+<figures/bad_quality_zone/bq_zonen_ALL.png, id=635, 2306.6175pt x 741.77126pt>
+File: figures/bad_quality_zone/bq_zonen_ALL.png Graphic file (type png)
+<use figures/bad_quality_zone/bq_zonen_ALL.png>
+Package luatex.def Info: figures/bad_quality_zone/bq_zonen_ALL.png  used on inp
+ut line 187.
+(luatex.def)             Requested size: 443.57848pt x 142.6471pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[18<./figures/bad_quality_zone/zoom_out_bq_zone.png><./figures/bad_quality_zone/
+bq_zone_02.png>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[19<./figures/bad_quality_zone/bq_zonen_ALL.png>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[20]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[21]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[22]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[23])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[24]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[25] (./sections/4.validacion_de_la_solucion.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[26]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[27]
+<figures/meshes/c_5r7_01.png, id=785, 755.82375pt x 741.77126pt>
+File: figures/meshes/c_5r7_01.png Graphic file (type png)
+<use figures/meshes/c_5r7_01.png>
+Package luatex.def Info: figures/meshes/c_5r7_01.png  used on input line 114.
+(luatex.def)             Requested size: 199.60895pt x 195.88933pt.
+<figures/meshes/c_5r7_2_01.png, id=786, 755.82375pt x 741.77126pt>
+File: figures/meshes/c_5r7_2_01.png Graphic file (type png)
+<use figures/meshes/c_5r7_2_01.png>
+Package luatex.def Info: figures/meshes/c_5r7_2_01.png  used on input line 118.
+
+(luatex.def)             Requested size: 199.60895pt x 195.88933pt.
+<figures/meshes/moai_5r7_01.png, id=789, 755.82375pt x 741.77126pt>
+File: figures/meshes/moai_5r7_01.png Graphic file (type png)
+<use figures/meshes/moai_5r7_01.png>
+Package luatex.def Info: figures/meshes/moai_5r7_01.png  used on input line 164
+.
+(luatex.def)             Requested size: 199.60895pt x 195.88933pt.
+<figures/meshes/moai_5r7_2_01.png, id=790, 755.82375pt x 741.77126pt>
+File: figures/meshes/moai_5r7_2_01.png Graphic file (type png)
+<use figures/meshes/moai_5r7_2_01.png>
+Package luatex.def Info: figures/meshes/moai_5r7_2_01.png  used on input line 1
+68.
+(luatex.def)             Requested size: 199.60895pt x 195.88933pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[28]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[29]
+<figures/meshes/palate_5r7_01.png, id=854, 755.82375pt x 741.77126pt>
+File: figures/meshes/palate_5r7_01.png Graphic file (type png)
+<use figures/meshes/palate_5r7_01.png>
+Package luatex.def Info: figures/meshes/palate_5r7_01.png  used on input line 2
+01.
+(luatex.def)             Requested size: 354.86412pt x 348.27036pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[30<./figures/meshes/c_5r7_01.png><./figures/meshes/c_5r7_2_01.png><./figures/me
+shes/moai_5r7_01.png><./figures/meshes/moai_5r7_2_01.png>]
+
+LaTeX Warning: Text page 31 contains only floats.
+
+
+Overfull \vbox (0.87404pt too high) has occurred while \output is active []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[31<./figures/meshes/palate_5r7_01.png>]
+<figures/meshes/coxis_8r9_01.png, id=881, 755.82375pt x 741.77126pt>
+File: figures/meshes/coxis_8r9_01.png Graphic file (type png)
+<use figures/meshes/coxis_8r9_01.png>
+Package luatex.def Info: figures/meshes/coxis_8r9_01.png  used on input line 23
+3.
+(luatex.def)             Requested size: 354.86412pt x 348.27036pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[32]
+Overfull \hbox (3.22241pt too wide) in paragraph at lines 258--273
+[][] 
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[33<./figures/meshes/coxis_8r9_01.png>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[34]
+Missing character: There is no ^^V (U+0016) in font name:Carlito/B:mode=node;scr
+ipt=latn;language=dflt;+tlig;!
+<figures/analysis/fit_all.png, id=922, 1445.4pt x 1084.05pt>
+File: figures/analysis/fit_all.png Graphic file (type png)
+<use figures/analysis/fit_all.png>
+Package luatex.def Info: figures/analysis/fit_all.png  used on input line 401.
+(luatex.def)             Requested size: 596.22748pt x 447.17615pt.
+
+Overfull \hbox (3.59767pt too wide) in paragraph at lines 401--402
+[][] 
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[35]
+<figures/analysis/fit_all_bar.png, id=932, 1445.4pt x 1084.05pt>
+File: figures/analysis/fit_all_bar.png Graphic file (type png)
+<use figures/analysis/fit_all_bar.png>
+Package luatex.def Info: figures/analysis/fit_all_bar.png  used on input line 4
+31.
+(luatex.def)             Requested size: 596.22748pt x 447.17615pt.
+
+Overfull \hbox (3.59767pt too wide) in paragraph at lines 431--432
+[][] 
+ []
+
+)
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[36] (./sections/5.conclusiones.tex)
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[37] (./sections/6.anexos.tex)
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[38] (./main.bbl)
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[39]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[40<./figures/analysis/fit_all.png>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 23.94965pt, for example:
+(fancyhdr)                \setlength{\headheight}{23.94965pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-11.94965pt}.
+
+[41<./figures/analysis/fit_all_bar.png>]
+
+enddocument/afterlastpage: lastpage setting LastPage.
+(./main.aux
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
+)
+ ***********
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-05-27>
+ ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 69D2D540AD2129FD700862626402582D;9398.
+)
+
+Here is how much of LuaTeX's memory you used:
+ 20507 strings out of 475915
+ 745277,1977958 words of node,token memory allocated
+ 947 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 4 glue, 4 kern, 1 sub_mlist, 1 glyph, 48 attribute,
+ 105 glue_spec, 26 attribute_list, 1 write, 8 pdf_action nodes
+   avail lists: 2:18936,3:533,4:12154,5:12359,6:136,7:24400,8:33,9:36410,10:43,1
+1:2418
+ 42236 multiletter control sequences out of 65536+600000
+ 71 fonts using 18003271 bytes
+ 79i,19n,99p,864b,1004s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<//?/d:/programas/miktex/fonts/opentype/public/lm/lmmono12-regular.otf><//?/d:/p
+rogramas/miktex/fonts/opentype/public/lm/lmmonolt10-bold.otf><//?/d:/programas/m
+iktex/fonts/opentype/public/lm/lmmono10-regular.otf><D:/Programas/Miktex/fonts/t
+ruetype/public/simple-thesis-dissertation/carlito-italic.ttf><D:/Programas/Mikte
+x/fonts/truetype/public/simple-thesis-dissertation/carlito-bolditalic.ttf><D:/Pr
+ogramas/Miktex/fonts/truetype/public/simple-thesis-dissertation/carlito-bold.ttf
+><D:/Programas/Miktex/fonts/truetype/public/simple-thesis-dissertation/carlito-r
+egular.ttf><D:/Programas/Miktex/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Pr
+ogramas/Miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Programas/Miktex/fo
+nts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Programas/Miktex/fonts/type1/public/
+amsfonts/cm/cmmi6.pfb><D:/Programas/Miktex/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb><D:/Programas/Miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Programas/
+Miktex/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Programas/Miktex/fonts/type1
+/public/amsfonts/cm/cmr6.pfb><D:/Programas/Miktex/fonts/type1/public/amsfonts/cm
+/cmr8.pfb><D:/Programas/Miktex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Pro
+gramas/Miktex/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (47 pages, 5071183 bytes).
+
+PDF statistics: 1064 PDF objects out of 1200 (max. 8388607)
+ 404 named destinations out of 1000 (max. 131072)
+ 393 words of extra memory for PDF output out of 10000 (max. 100000000)
+

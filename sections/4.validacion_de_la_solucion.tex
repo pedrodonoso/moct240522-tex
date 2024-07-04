@@ -239,16 +239,51 @@ output >    Threshold: 0.0
 
 
 
+\subsection{Resultados}
+
+Para analizar el comportamiento del algoritmo, nos enfocaremos en ajustar la cantidad de iteraciones a algún modelo conocido, entregar una hipótesis sobre la anomalía en la malla del coxis y comparar con los resultados entregados en \cite{daines2018repairing}.
+
+\subsubsection{Ajuste de la cantidad de iteraciones}
+
+El algoritmo propuesto se comporta de muy buena manera para todas las mallas a excepción de la malla que representa el coxis, cuando logra converger, la cantidad de Octantes por refinar dando como resultado una malla válida, es posible reducir considerablemente la cantidad de Octantes por refinar en muy pocas iteraciones, a simple vista se podría entregar una hipótesis sobre el comportamiento del algoritmo en cada iteración.
+
+Para esto, se considerará, a diferencia de lo que ya es tónica en lo antes mostrado, la cantidad de Elementos menores al threshold escogido, es decir, todos los Elementos que pertenecen a la malla y tienen $J_{ENS} \leq 0$, se denotará como $E_0$. Se elaboró la siguiente tabla con el $E_0$ en cada iteración para las diferentes mallas de los casos definidos, \autoref{table:num_els_ref}.
+
+Lo evidente es la relación estrecha entre Elementos y Octantes que se respaldan en su naturaleza estructural. Luego, la aparente relación en el comportamiento de $E$ en todos los casos, permite comenzar la busqueda del modelo, por uno exponencial.
+
+
+En la \autoref{table:num_els_ref} se muestra el comportamiento de $E_0$ en cada iteración, de aquí sólamente se analizarán los casos que convergen a cero.
+
+\begin{table}[!ht]
+\begin{tabular}{|lllllll|}
+\hline
+\multicolumn{7}{|c|}{Número de Elementos por refinar en cada iteración.}                                                                                                                                                                                                                    \\ \hline
+\multicolumn{1}{|l|}{\textbf{N° Iteración}} & \multicolumn{1}{l|}{\textbf{cortex\_5r7}} & \multicolumn{1}{l|}{\textbf{cortex\_5r7\_2}} & \multicolumn{1}{l|}{\textbf{moai\_5r7}} & \multicolumn{1}{l|}{\textbf{moai\_5r7}} & \multicolumn{1}{l|}{\textbf{palate\_6r7}} & \textbf{coxis\_7} \\ \hline
+\multicolumn{1}{|l|}{1}                     & \multicolumn{1}{l|}{27}                   & \multicolumn{1}{l|}{64}                      & \multicolumn{1}{l|}{26}                 & \multicolumn{1}{l|}{15}                 & \multicolumn{1}{l|}{25}                   & 242               \\ \hline
+\multicolumn{1}{|l|}{2}                     & \multicolumn{1}{l|}{7}                    & \multicolumn{1}{l|}{32}                      & \multicolumn{1}{l|}{7}                  & \multicolumn{1}{l|}{12}                 & \multicolumn{1}{l|}{5}                    & 658               \\ \hline
+\multicolumn{1}{|l|}{3}                     & \multicolumn{1}{l|}{2}                    & \multicolumn{1}{l|}{13}                      & \multicolumn{1}{l|}{2}                  & \multicolumn{1}{l|}{11}                 & \multicolumn{1}{l|}{3}                    & 435               \\ \hline
+\multicolumn{1}{|l|}{4}                     & \multicolumn{1}{l|}{1}                    & \multicolumn{1}{l|}{6}                       & \multicolumn{1}{l|}{1}                  & \multicolumn{1}{l|}{3}                  & \multicolumn{1}{l|}{1}                    & 612               \\ \hline
+\multicolumn{1}{|l|}{5}                     & \multicolumn{1}{l|}{0}                    & \multicolumn{1}{l|}{7}                       & \multicolumn{1}{l|}{1}                  & \multicolumn{1}{l|}{0}                  & \multicolumn{1}{l|}{1}                    & 679               \\ \hline
+\multicolumn{1}{|l|}{6}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{3}                       & \multicolumn{1}{l|}{0}                  & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{0}                    & 746               \\ \hline
+\multicolumn{1}{|l|}{7}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{0}                       & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 880               \\ \hline
+\multicolumn{1}{|l|}{8}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 1017              \\ \hline
+\multicolumn{1}{|l|}{9}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 1179              \\ \hline
+\multicolumn{1}{|l|}{10}                    & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 1302              \\ \hline
+\end{tabular}
+\caption{ $E_0$ en cada iteración para los diferentes casos. }
+\label{table:num_els_ref}
+\end{table}
+
 \subsection{Análisis de los resultados}
 
-\subsubsection{Análisis de la tasa de reducción de la cantidad de Octantes por refinar en cada iteración }
+\subsubsection{ Análisis de la tasa de reducción de la cantidad de Elementos por refinar en cada iteración }
 
 \begin{itemize}
     \item Definición de una secuencia exponencial.
 
-    Para determinar si la secuencia de números $27, 7, 2, 1$ se reduce de manera exponencial, es esencial revisar cómo se comportan las reducciones entre cada par de números consecutivos y si sigue un patrón consistente con la reducción exponencial.
+    Para determinar si $E$ se comporta de manera exponencial, es esencial revisar cómo se comportan las reducciones entre cada par de números consecutivos y si sigue un patrón consistente con un modelo exponencial.
 
-    Una reducción exponencial sigue la forma:
+    Un modelo exponencial sigue la forma:
     $$y = a \cdot r^n$$
      
     donde:
@@ -260,137 +295,143 @@ output >    Threshold: 0.0
         \item n es la posición en la secuencia.
     \end{itemize}
     
-    Para verificar si una secuencia sigue una reducción exponencial, podemos examinar si el cociente entre cada par de términos consecutivos es aproximadamente constante. Es decir, si $\frac{y_{n+1}}{y_n}$ es constante.
+    Para verificar si una secuencia sigue un modelo exponencial, podemos examinar si el cociente entre cada par de términos consecutivos es aproximadamente constante. Es decir, si $\frac{y_{n+1}}{y_n}$ es constante.
 
     \item Cálculo del cociente entre términos consecutivos
 
-    Calculamos el cociente entre cada par de números consecutivos en la secuencia:
+    Calculamos el cociente entre cada par de números consecutivos en la secuencia de cada uno de los casos. \autoref{table:co_els_ref}
 
-    \begin{itemize}
-        \item  Entre 21 y 7: $\frac{7}{21} \approx 0.333$
-        \item  Entre 7 y 2: $\frac{2}{7} \approx 0.286$
-        \item  Entre 2 y 1: $\frac{1}{2} = 0.5$
-    \end{itemize}
+	\begin{table}[!ht]
+	\begin{tabular}{|llllll|}
+	\hline
+	\multicolumn{6}{|c|}{ Cociente entre cantidad de Elementos por refinar consecutivos}                                                                                                                                                                           \\ \hline
+	\multicolumn{1}{|l|}{\textbf{N° Iteración}} & \multicolumn{1}{l|}{\textbf{cortex\_5r7}} & \multicolumn{1}{l|}{\textbf{cortex\_5r7\_2}} & \multicolumn{1}{l|}{\textbf{moai\_5r7}} & \multicolumn{1}{l|}{\textbf{moai\_5r7}} & \textbf{palate\_6r7} \\ \hline
+	\multicolumn{1}{|l|}{1-2}                   & \multicolumn{1}{l|}{0.259}          & \multicolumn{1}{l|}{0.500}             & \multicolumn{1}{l|}{0.269}         & \multicolumn{1}{l|}{1.25}         & 0.2             \\ \hline
+	\multicolumn{1}{|l|}{2-3}                   & \multicolumn{1}{l|}{0.286}            & \multicolumn{1}{l|}{0.406}             & \multicolumn{1}{l|}{0.285}          & \multicolumn{1}{l|}{0.733}        & 0.6              \\ \hline
+	\multicolumn{1}{|l|}{3-4}                   & \multicolumn{1}{l|}{0.500}            & \multicolumn{1}{l|}{0.462}              & \multicolumn{1}{l|}{0.5}            & \multicolumn{1}{l|}{0.273}         & 0.333            \\ \hline
+	\multicolumn{1}{|l|}{4-5}                   & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{1.166}               & \multicolumn{1}{l|}{1.0}            & \multicolumn{1}{l|}{}                   & 1.0              \\ \hline
+	\multicolumn{1}{|l|}{5-6}                   & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{0.429}               & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   &                      \\ \hline
+	\end{tabular}
+	\caption{Cocientes entre cantidades de Elementos con $J_{ENS} \leq 0$ para los diferentes casos. }
+	\label{table:co_els_ref}
+	\end{table}
+
 
     \item Evaluación de los Cocientes.
 
-    Para una reducción exponencial pura, los cocientes entre términos consecutivos deberían ser aproximadamente iguales. En este caso, los valores no son iguales, pero están en un rango que sugiere una tendencia decreciente. Sin embargo, la variabilidad entre los cocientes sugiere que la secuencia no se reduce de manera perfectamente exponencial con una sola razón común.
+    Para un modelo exponencial puro, los cocientes entre términos consecutivos deberán ser aproximadamente iguales. En este caso, los valores no lo son, pero están en un rango que sugiere una tendencia decreciente. Sin embargo, la variabilidad entre los cocientes da indicios de que la secuencia no se reduce de manera perfectamente exponencial con una sola razón común.
+
+	Por ejemplo, en el caso de \textit{cortex\_5r7\_2}, sus cocientes se mantienen relativamente constante, aproximadamente $0.45$, a excepción del cociente en las iteraciones \textit{4-5} que se escapa casi al doble del promedio.
+
 
     \item Ajuste a un modelo exponencial
 
-    Podemos intentar ajustar un modelo exponencial para ver si se adapta razonablemente a los datos:
-    Si consideramos $a  = 21$(valor inicial), podemos buscar una razón $r$ que mejor ajuste la reducción de la secuencia.
+	Se ajustará a un modelo exponencial cada uno de los casos. Considerando $a_i$, valor inicial del caso $i$, se buscará una razón $r_i$ que mejor ajuste la reducción de la secuencia para el caso.
     
-    Para esto, podemos resolver la ecuación $$y = 21 \cdot r^n$$ para cada $n$ y encontrar el $r$ promedio que mejor describa la secuencia. Aunque los cocientes no son constantes, podemos ver si hay un $r$ promedio que se ajuste razonablemente.
+    Para esto, es necesario resolver la ecuación $$y = a_i \cdot r_{i}^{n}$$ para cada $n$ y encontrar el $r_i$ promedio que mejor describa la secuencia. Aunque los cocientes no son constantes, podemos ver si hay un $\bar{r_i}$ promedio que se ajuste razonablemente.
 
     \item Cálculo promedio geométrico
 
-    El promedio geométrico de los cocientes es una manera de obtener una aproximación de la razón $r$:
+    El promedio geométrico de los cocientes es una manera de obtener una aproximación de la razón $\bar{r_i}$:
 
-        $$ r \approx \sqrt[3]{ \left( \frac{7}{21} \times \frac{2}{7} \times \frac{1}{2} \right) }$$
+    Su valor se calcula en \autoref{table:r_fit}.
 
-    Calculamos el valor:
+	\begin{table}[!ht]
+ 		\centering
+		\begin{tabular}{|ll|}
+		\hline
+		\multicolumn{2}{|c|}{Promedio geométrico de los cocientes de cada caso}     \\ \hline
+		\multicolumn{1}{|l|}{\textbf{Casos} $\mathbf{i}$}     & Promedio geométrico $\mathbf{\bar{r_i}}$ \\ \hline
+		\multicolumn{1}{|l|}{cortex\_5r7}    & 0.333                                \\ \hline
+		\multicolumn{1}{|l|}{cortex\_5r7\_2} & 0.542                                \\ \hline
+		\multicolumn{1}{|l|}{moai\_5r7}      & 0.443                                \\ \hline
+		\multicolumn{1}{|l|}{moai\_5r7\_2}   & 0.630                                \\ \hline
+		\multicolumn{1}{|l|}{palate\_6r7}    & 0.408                                \\ \hline
+		\end{tabular}
+		\caption{Promedio geométrico de los cocientes de cada caso. }
+		\label{table:r_fit}
+	\end{table}
 
-    $$ r \approx \sqrt[3]{0.333 \times 0.286 \times 0.5 \approx 0.36} $$
+    Estos $\bar{r_i}$ indican que las secuencias podrían ajustarse aproximadamente por un modelo exponencial con razones cercanas a las propuestas en la tabla \ref{table:r_fit}.
 
-    Este $r$ promedio indica que la secuencia puede aproximarse por una reducción exponencial con una razón cercana a $0.36$.
+    Gráficamente podemos ver el comportamiento de $E_0$ en cada iteración sobre los datos reales en \autoref{fig:exponential_fit_all}.  La gran mayoría de los casos se ajustan de buena manera, podríamos decir que el algoritmo se comporta bajo un modelo exponencial, sin considerar el caso excepcional del coxis.  A diferencia de los demás casos, la malla del coxis diverge también de manera exponencial.  Esto puede explicarse debido al comportamiento en cascada que tiene el algoritmo y la estructura continua de las vecindades cóncavas.
+    
+%	\begin{figure}[!ht]
+%		\centering
+%		\begin{subfigure}[t]{0.49\textwidth}
+%			\includegraphics[width=1.0\textwidth]{figures/analysis/cortex/c_5r7_1_fit.png}
+%		\end{subfigure}
+%		\hfill
+%		 \begin{subfigure}[t]{0.49\textwidth}
+%			\includegraphics[width=1.0\textwidth]{figures/analysis/cortex/c_5r7_2_2_fit.png}
+%		\end{subfigure}
+%		\hfill
+%		\begin{subfigure}[t]{0.49\textwidth}
+%			\includegraphics[width=1.0\textwidth]{figures/analysis/moai/moai_5r7_1_fit.png}
+%		\end{subfigure}
+%		\hfill
+%		\begin{subfigure}[t]{0.49\textwidth}
+%			\includegraphics[width=1.0\textwidth]{figures/analysis/moai/moai_5r7_2_2_fit.png}
+%		\end{subfigure}
+%		\hfill
+%		\begin{subfigure}[t]{0.49\textwidth}
+%			\includegraphics[width=1.0\textwidth]{figures/analysis/palate/palate_6r7_1_fit.png}
+%		\end{subfigure}
+%		\hfill
+%		\begin{subfigure}[t]{0.49\textwidth}
+%		\includegraphics[width=1.0\textwidth]{figures/analysis/palate/palate_5r7_1_fit.png}
+%		\end{subfigure}
+%	\end{figure}
+%		
+%	\begin{figure}[!ht]
+%		\ContinuedFloat
+%		\centering
+%		\begin{subfigure}[t]{0.49\textwidth}
+%		\includegraphics[width=1.0\textwidth]{figures/analysis/coxis/coxis_8_1_fit.png}
+%		\end{subfigure}
+%		\caption{ Representación Coxis sin refinamiento local. }
+%		Fuente: Elaboración propia.
+%		\label{fig:exponential_fit_all}
+%	\end{figure}
 
-    Gráficamente podemos ver el ajuste del comportamiento de la cantidad de Octantes por refinar en cada iteración y los datos reales en \autoref{fig:exponential_fit}. Si bien este ajuste funciona muy bien para este caso, no podemos concluir que este algoritmo funcionará de esta manera para otros casos.
 
-    % \begin{figure}[!ht]
-    % \centering
-    % \includegraphics[width=1.0\textwidth]{figures/analysis/exponential_fit.png}
-    % \caption{ Ajuste exponencial de la cantidad de Octantes por refinar en cada iteración sobre los valores reales.\\  Fuente: Elaboración propia.}
-    % \label{fig:exponential_fit}
-    % \end{figure}
+	\begin{figure}[!ht]
+		\centering
+		\begin{subfigure}[t]{1.0\textwidth}
+			\includegraphics[width=0.75\paperheight, angle=90, origin=c]{figures/analysis/fit_all.png}
+		\end{subfigure}
+		\caption{ Ajuste exponencial de $E_0$ para todos los casos. }
+		Fuente: Elaboración propia.
+		\label{fig:exponential_fit_all}
+	\end{figure}
+
 \end{itemize}
 
-\subsection{Resultados}
 
-Para analizar el comportamiento del algoritmo, nos enfocaremos en ajustar la cantidad de iteraciones a algún modelo conocido, entregar una hipótesis sobre la anomalía en la malla del coxis, comparar con los resultados entregados en \cite{daines2018repairing}.
+\subsubsection{ Análisis del comportamiento de los Elementos posicionados en la vecindad a las zonas refinadas.}
 
-\subsubsection{Ajuste de la cantidad de iteraciones}
-
-El algoritmo propuesto se comporta de muy buena manera para todas las mallas a excepción de la malla que representa el coxis, cuando logra converger a una malla válida, es posible reducir considerablemente la cantidad de Octantes por refinar en muy pocas iteraciones, a simple vista se podría entregar una hipótesis sobre el comportamiento de la reducción en la cantidad de Octantes por refinar en cada iteración.
-
-Para esto, se construyó la siguiente tabla con el número de Octantes por refinar en cada iteración para las diferentes mallas, \autoref{table:num_octs_ref}.
+Cuando se refina cada Octante con Elementos inválidos, genera una reacción en cadena de refinamiento en los Octantes adyacentes para mantener la consistencia en los niveles de refinamiento de la malla. Debe cumplirse que, dado un Octante $O$ con nivel de refinamiento $rl_o$, deben, sus vecinos directos, $\bar{O}$, tener un nivel de refinamiento $rl_{\bar{o}} \in \{rl_o + 1, rl_o - 1, rl_o\}$.
 
 
+%La estadística $J_{ENS}$ se muestra como un histograma que representa la frecuencia de los Elementos $E_x$,  $\forall x \in \{0, 0.03, 0.05\}$, es decir, una función de frecuencia escalonada definiendo $x$ como las cota superiores de cada intervalo.
 
-\begin{table}[!ht]
-\begin{tabular}{|lllllll|}
-\hline
-\multicolumn{7}{|c|}{Número de Octantes por refinar en cada iteración}                                                                                                                                                                                                                     \\ \hline
-\multicolumn{1}{|l|}{\textbf{N° Iteración}} & \multicolumn{1}{l|}{\textbf{cortex\_5r7}} & \multicolumn{1}{l|}{\textbf{cortex\_5r7\_2}} & \multicolumn{1}{l|}{\textbf{moai\_5r7}} & \multicolumn{1}{l|}{\textbf{moai\_5r7}} & \multicolumn{1}{l|}{\textbf{palate\_6r7}} & \textbf{coxis\_7} \\ \hline
-\multicolumn{1}{|l|}{1}                     & \multicolumn{1}{l|}{21}                   & \multicolumn{1}{l|}{52}                      & \multicolumn{1}{l|}{22}                 & \multicolumn{1}{l|}{10}                 & \multicolumn{1}{l|}{33}                   & 211               \\ \hline
-\multicolumn{1}{|l|}{2}                     & \multicolumn{1}{l|}{7}                    & \multicolumn{1}{l|}{27}                      & \multicolumn{1}{l|}{5}                  & \multicolumn{1}{l|}{12}                 & \multicolumn{1}{l|}{17}                   & 488               \\ \hline
-\multicolumn{1}{|l|}{3}                     & \multicolumn{1}{l|}{2}                    & \multicolumn{1}{l|}{11}                      & \multicolumn{1}{l|}{2}                  & \multicolumn{1}{l|}{9}                  & \multicolumn{1}{l|}{6}                    & 341               \\ \hline
-\multicolumn{1}{|l|}{4}                     & \multicolumn{1}{l|}{1}                    & \multicolumn{1}{l|}{6}                       & \multicolumn{1}{l|}{1}                  & \multicolumn{1}{l|}{3}                  & \multicolumn{1}{l|}{1}                    & 463               \\ \hline
-\multicolumn{1}{|l|}{5}                     & \multicolumn{1}{l|}{0}                    & \multicolumn{1}{l|}{7}                       & \multicolumn{1}{l|}{1}                  & \multicolumn{1}{l|}{0}                  & \multicolumn{1}{l|}{1}                    & 528               \\ \hline
-\multicolumn{1}{|l|}{6}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{3}                       & \multicolumn{1}{l|}{0}                  & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{0}                    & 567               \\ \hline
-\multicolumn{1}{|l|}{7}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{0}                       & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 665               \\ \hline
-\multicolumn{1}{|l|}{8}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 767               \\ \hline
-\multicolumn{1}{|l|}{9}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 887               \\ \hline
-\multicolumn{1}{|l|}{10}                    & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 1000              \\ \hline
-\end{tabular}
-\caption{asd}
-\label{table:num_octs_ref}
-\end{table}
+La estadística $J_{ENS}$ se muestra como un histograma que representa la frecuencia de Elementos, siendo este histograma una función de escalonada que define la frecuencia de Elementos de calidad deficiente. En \cite{shepherd-2008}, se define $J_{ENS_{SJ}} \in [0, 0.2[$, como Elementos cuestionables, es decir, Elementos de calidad deficiente. Además, destacar el estándar de ANSYS, que considera $J_{ENS_{AN}} \in [0, 0.03[$, como Elementos inválidos.
 
+Por tanto, para este análisis se acotará definiendo $EC \in \{0, 0.03, 0.05\}$ como Elementos de calidad cuestionable.
+Además, definiremos la frecuencia de Elementos con $J_{ENS} \in [m, n[$ , como $H^{n}_{m}$.
 
-Luego, se analizará la cantidad de Octantes por refinar o Elementos de mala calidad en cada iteración.
+Entonces, se graficará en \autoref{fig:fit_all_bar}, los histogramas de cada malla para los intervalos definidos por $EC$.
+Teniendo, $H^{0.0}_{-inf}$, $H^{0.03}_{0.0}$, $H^{0.05}_{0.03}$.
+
+ $J_{ENS}$ con la frecuencia de $E_{EC} , \forall x \in \{0, 0.03, 0.05\}$
 
 \begin{figure}[!ht]
-    \centering
-    \begin{subfigure}[t]{0.45\textwidth}
-        \includegraphics[width=1.0\textwidth]{figures/meshes/c_5r7_01.png}
-        \caption{Zoom out de sección extraída.}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.45\textwidth}
-        \includegraphics[width=1.0\textwidth]{figures/meshes/c_5r7_2_01.png}
-        \caption{Zona extraída con elementos de mala calidad resaltados.}
-    \end{subfigure}
-    \caption{ Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }
-    Fuente: Elaboración propia.
-    \label{fig:zoom_cortex_surf}
+	\centering
+	\begin{subfigure}[t]{1.0\textwidth}
+		\includegraphics[width=0.75\paperheight, angle=90, origin=c]{figures/analysis/fit_all_bar.png}
+	\end{subfigure}
+	\caption{ Histograma agrupado por intervalo para todos los casos. }
+	Fuente: Elaboración propia.
+	\label{fig:fit_all_bar}
 \end{figure}
 
-
-
-\begin{figure}[!ht]
-    \centering
-    \begin{subfigure}[t]{0.8\textwidth}
-        \includegraphics[width=1.0\textwidth]{figures/meshes/coxis_8r9_01.png}
-        \caption{Zoom out de sección extraída.}
-    \end{subfigure}
-    \caption{ Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }
-    Fuente: Elaboración propia.
-    \label{fig:zoom_cortex_surf}
-\end{figure}
-
-\begin{figure}[!ht]
-    \centering
-    \begin{subfigure}[t]{0.45\textwidth}
-        \includegraphics[width=1.0\textwidth]{figures/meshes/moai_5r7_01.png}
-        \caption{Zoom out de sección extraída.}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.45\textwidth}
-        \includegraphics[width=1.0\textwidth]{figures/meshes/moai_5r7_2_01.png}
-        \caption{Zona extraída con elementos de mala calidad resaltados.}
-    \end{subfigure}
-    \caption{ Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }
-    Fuente: Elaboración propia.
-    \label{fig:zoom_cortex_surf}
-\end{figure}
-
-
-\begin{figure}[!ht]
-    \centering
-    \begin{subfigure}[t]{0.8\textwidth}
-        \includegraphics[width=1.0\textwidth]{figures/meshes/palate_5r7_01.png}
-        \caption{Zoom out de sección extraída.}
-    \end{subfigure}
-    \caption{ Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }
-    Fuente: Elaboración propia.
-    \label{fig:zoom_cortex_surf}
-\end{figure}

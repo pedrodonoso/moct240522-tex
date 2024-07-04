@@ -1,0 +1,26 @@
+# Fdb version 4
+["pdflatex"] 1719888024.39836 "main.tex" "main.pdf" "main" 1719888024.75414 2
+  "D:/Programas/Miktex/tex/generic/babel/babel.sty" 1704647332 150008 7a05b0fdc0167c04e192003e780ab195 ""
+  "D:/Programas/Miktex/tex/generic/babel/locale/es/babel-spanish.tex" 1704647334 336 a1c472f674f6f0c25a2c95ad8c7ad024 ""
+  "D:/Programas/Miktex/tex/generic/babel/txtbabel.def" 1704647332 6948 df63e25be1d2bc35bbad5a0141f41348 ""
+  "D:/Programas/Miktex/tex/latex/arabi/bblopts.cfg" 1705750854 902 74ca68fb2e6c2b8d370ff0e672de0f31 ""
+  "D:/Programas/Miktex/tex/latex/babel-spanish/spanish.ldf" 1622279580 26965 3b6d1655ad716f98e788b1fb9f2e87b8 ""
+  "D:/Programas/Miktex/tex/latex/base/article.cls" 1705273579 20144 147463a6a579f4597269ef9565205cfe ""
+  "D:/Programas/Miktex/tex/latex/base/size12.clo" 1705273578 8449 f07039d8e4e89f21078d9b5137579bfc ""
+  "D:/Programas/Miktex/tex/latex/fontspec/fontspec.sty" 1642213122 1656 7e824878bad4df5a3e8bba4e463d9126 ""
+  "D:/Programas/Miktex/tex/latex/graphics-cfg/graphics.cfg" 1465894292 1224 978390e9c2234eab29404bc21b268d1e ""
+  "D:/Programas/Miktex/tex/latex/graphics-def/pdftex.def" 1663918690 19448 1e988b341dda20961a6b931bcde55519 ""
+  "D:/Programas/Miktex/tex/latex/graphics/graphics.sty" 1665067579 18387 8f900a490197ebaf93c02ae9476d4b09 ""
+  "D:/Programas/Miktex/tex/latex/graphics/graphicx.sty" 1665067579 8010 a8d949cbdbc5c983593827c9eec252e1 ""
+  "D:/Programas/Miktex/tex/latex/graphics/keyval.sty" 1665067579 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
+  "D:/Programas/Miktex/tex/latex/graphics/trig.sty" 1665067579 4023 293ea1c16429fc0c4cf605f4da1791a9 ""
+  "D:/Programas/Miktex/tex/latex/l3backend/l3backend-pdftex.def" 1704400941 30006 57b07afb710ee2f649c65cfbafda39c1 ""
+  "D:/Programas/Miktex/tex/latex/l3kernel/expl3.sty" 1704401523 6565 189a69b081829349174d0a0f0ab9e4d5 ""
+  "D:/Programas/Miktex/tex/latex/l3packages/xparse/xparse.sty" 1696961617 9327 c30c00c0072edba199ede5889311aaa9 ""
+  "main.aux" 1719886530 24737 960e72baa37a0f227f73982576bfce4b "pdflatex"
+  "main.tex" 1719887835 12609 0bdc5f1c0e3c07b0f067fa5542093a9c ""
+  (generated)
+  "main.aux"
+  "main.log"
+  "main.pdf"
+  (rewritten before read)

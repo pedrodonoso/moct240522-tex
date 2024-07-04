@@ -1,0 +1,50 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\textbf {Resumen}}{\es@scroman {i}}{section*.1}%
+\contentsline {section}{\textbf {Abstract}}{\es@scroman {i}}{section*.2}%
+\contentsline {section}{\numberline {1}\textbf {Glosario}}{\es@scroman {ii}}{section.1}%
+\contentsline {section}{\textbf {Índice de Figuras}}{\es@scroman {v}}{section*.3}%
+\contentsline {section}{\textbf {Índice de Tablas}}{\es@scroman {v}}{section*.4}%
+\contentsline {section}{\textbf {Introducción}}{1}{section*.5}%
+\contentsline {section}{\textbf {Capítulo 2: Definición del problema}}{2}{section*.6}%
+\contentsline {subsection}{\numberline {2.1}Contexto}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Mallas geométricas}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Mallas Octree mixtas}{2}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Actualidad}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Lineamiento}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Objetivos}{5}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Objetivo general}{5}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Objetivos específicos}{6}{subsubsection.2.6.2}%
+\contentsline {section}{\textbf {Capítulo 3: Marco conceptual}}{7}{section*.10}%
+\contentsline {subsection}{\numberline {3.1}Medida de calidad para elementos en Mallas Mixtas}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Malla inicial}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Herramientas}{9}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Mixed-element mesh generator}{10}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Mixed-element $J_{ENS}$ stadistics generator}{11}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}ParaView}{12}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Estructura de datos}{12}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Acercamiento al algoritmo de Mixed-element mesh generator}{13}{subsubsection.3.4.1}%
+\contentsline {section}{\textbf {Capítulo 4: Propuesta de solución}}{15}{section*.14}%
+\contentsline {subsection}{\numberline {4.1}Comprensión del problema}{15}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Comprensión de elementos inválidos}{17}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Análisis de la vecindad}{17}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Propuesta}{18}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Generación de malla inicial.}{19}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Identificación y etiquetado de Octantes.}{21}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Refinamiento de Octantes Identificados.}{22}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}Ciclo Iterativo de Evaluación y Refinamiento.}{23}{subsubsection.4.4.4}%
+\contentsline {section}{\textbf {Capítulo 5: Validación de la solución}}{26}{section*.20}%
+\contentsline {subsection}{\numberline {5.1}Stack de tecnologías}{26}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Proceso de análisis}{26}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Ejecución}{27}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Malla de corteza cerebral}{27}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Malla de Moai}{28}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Malla de paladar}{30}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Malla de coxis}{32}{subsubsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.4}Resultados}{32}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Ajuste de la cantidad de iteraciones}{32}{subsubsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.5}Análisis de los resultados}{33}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1} Análisis de la tasa de reducción de la cantidad de Elementos por refinar en cada iteración }{33}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2} Análisis del comportamiento de los Elementos posicionados en la vecindad a las zonas refinadas.}{36}{subsubsection.5.5.2}%
+\contentsline {section}{\textbf {Capítulo 6: Conclusiones}}{37}{section*.34}%
+\contentsline {section}{ANEXOS}{38}{section*.35}%
+\contentsline {section}{\textbf {Referencias Bibliográficas}}{39}{section*.36}%

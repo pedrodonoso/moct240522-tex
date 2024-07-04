@@ -1,0 +1,15 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Elementos básicos}}{3}{figure.caption.7}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Malla Octree parcialmente refinada.}}{4}{figure.caption.8}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Patrón de transición.}}{5}{figure.caption.9}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Muestra frontal y lateral de la malla inicial con refinamiento global de nivel 5 y refinamiento en superficie prismática regular de nivel 7. Fuente: Elaboración propia.}}{9}{figure.caption.11}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Interfaz de software Paraview, se muestra una sección de la malla inicial con dos elementos seleccionados. Fuente: Elaboración propia.}}{12}{figure.caption.12}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Zona frontal de la malla donde se presentan los elementos inválidos (verde). }}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Zona a analizar para evidenciar elementos de mala calidad, esta zona se extrajo de la representación de la malla con un nivel 5 de refinamiento general y nivel 7 de refinamiento en la superficie entregada. En la imagen de la izquierda se muestra una visión general de la superficie de la malla demarcada por elementos con vértices azules y la zona a estudiar de color celeste. En la imagen de la derecha, la zona a estudiar y un par de elementos de mala calidad destacados con color verde. }}{18}{figure.caption.17}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Perspectivas de vecindario (gris) donde se encuentra un para de elementos inválidos (verde). }}{19}{figure.caption.18}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Diferentes localidades de refinamiento en corteza cerebral. }}{30}{figure.caption.21}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Diferentes localidades de refinamiento en Moai. }}{30}{figure.caption.24}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Representación Paladar con refinamiento en zona superior. }}{31}{figure.caption.26}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Representación Coxis sin refinamiento local. }}{33}{figure.caption.28}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Ajuste exponencial de $E_0$ para todos los casos. }}{40}{figure.caption.32}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Histograma agrupado por intervalo para todos los casos. }}{41}{figure.caption.33}%
