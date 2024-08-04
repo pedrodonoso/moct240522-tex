@@ -60,7 +60,19 @@ Para validar la propuesta, se utilizará una serie de mallas con diferentes comp
         En general esta representación es muy compleja, presenta zonas muy pequeñas y con múltiples concavidades.
 \end{itemize}
 
-A cada una de estas mallas se les aplicará el algoritmo propuesto con un threshold cero y cien iteraciones como cota superior. 
+Luego de realizar algunas iteraciones básicas para tener una idea del comportamiento de las mallas con el algoritmo, realizando iteraciones donde se añadieron áreas prismáticas en diferentes zonas y otras iteraciones donde se modificaron los niveles de refinamiento tanto general como del área prismática
+
+Se identificaron dos factores importantes para tratar cada malla, y que si bien, parecen tener una correlación, este trabajo no busca encontrar dicha relación, por tanto, se tratarán como factores sin correlación.
+\begin{itemize}
+	\item Complejidad geométrica
+		Algunas mallas se notaron con alta densidad de regiones que forman depresiones o concavidades. Incluso algunas de ellas, presentaban alta densidad de estas zonas sólo en cierta parte de la representación.
+		Entonces para aquellas que presentaban su alta densidad de concavidades en una área determinada, se le aplicó el área prismática tanto en su zona de alta densidad como también fuera de ella, como sucede en el caso de la representación del Moai y Corteza Cerebral.
+		Para otras mallas, simplemente se insertó un área prismática con el fin de generar Elementos inválidos, como sucede en el Paladar, que si bien, presenta variedad de zonas cóncavas, no genera Elementos inválidos con sólo refinar globalmente, entonces para este caso, se realizaron variaciones en su refinamiento global presentando sólo una opción de posición en su zona prismática de refinamiento local.
+		
+	\item Capacidad Computacional
+		Esto hace alusión principalmente al tiempo que demora el algoritmo en realizar refinamiento global o incluso mallas que generan detenimientos forzados del proceso donde se ejecuta el algoritmo por, quizás, presentar un alto número de vértices y aristas, tan alta que el sistema operativo probablemente queda sin memoria. Como por ejemplo, cuando se realizó un refinamiento global de nivel nueve en la malla del Coxis.
+\end{itemize}
+
 Luego de iterar las mallas, se analizará sus estadísticas sobre Elementos de mala calidad.
 
 \subsection{Ejecución}
@@ -69,44 +81,20 @@ En cada malla dependiendo de su complejidad se aplicará o no, un área prismát
 
 La única malla a la que no se le aplicará el área prismática es la malla de coxis debido a su compleja naturaleza explicada en la sección anterior.
 
+A cada caso, se ejecutará el algoritmo con threshold $t \in \{ 0, 0.03, 0.05 \}$ y debido a que $E$ en la mayoría de los casos converge evidentemente en las primeras diez iteraciones, se escoge esta como cota superior.
+
+Es necesario, antes de comenzar, definir lo siguiente. Se referirá a una malla con refinamiento global de nivel $X$ y refinamiento local de nivel $Y$, como la malla $XrY$.
+
 \subsubsection{Malla de corteza cerebral}
 
-Al implementar el algoritmo propuesto en la malla de corteza cerebral, entregándole como input el threshold definido en esta propuesta, el modelo de la corteza, el modelo de la superficie prismática a refinar, la base de nombre de los archivos exportados y una cota de cien iteraciones.  Obtenemos el siguiente output \ref{out:cortex_1}, que nos muestra un identificador de cada iteración con la cantidad de Octantes a refinar al finalizar dicha iteración, finalizando exitosamente en la cuarta iteración con una malla sin elementos inválidos y reduciendo la cantidad de Octantes a refinar casi de manera exponencial.
+La corteza cerebral, si bien, presenta amplias zonas irregulares, el algoritmo no presenta problemas en su ejecución. Entonces se tratará como un caso para analizar complejidad geométrica.
+
+Al implementar el algoritmo propuesto en la malla de corteza cerebral, entregándole como input el threshold definido en esta propuesta, el modelo de la corteza, el modelo de la superficie prismática a refinar, la base de nombre de los archivos exportados y una cota de diez iteraciones.  Obtenemos el siguiente output \ref{out:cortex_1}, que nos muestra un identificador de cada iteración con la cantidad de Octantes a refinar al finalizar dicha iteración, finalizando exitosamente en la cuarta iteración con una malla sin elementos inválidos y reduciendo la cantidad de Octantes a refinar casi de manera exponencial.
 
 Luego se ejecutó el algoritmo con la zona a refinar en el lóbulo occipital con el siguiente output \ref{out:cortex_2}.
 
 Si bien, en esta ocasión se logró obtener una malla válida con algunas iteraciones adicionales, la cantidad de Elementos inválidos se comporta similar a el caso anterior.
 
-
-\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de corteza cerebral con zona a refinar en lóbulo frontal.\\ Fuente: Elaboración propia.},label={out:cortex_1}]
-input  >    ./script.sh 0.0 ./data/cortex.mdl ./data/cortex_surf_roi.mdl c_5r7 100
-output >    Threshold: 0.0
-            Main surface: ./data/cortex.mdl
-            Reference surface: ./data/cortex_surf_roi.mdl
-            Base name: c_5r7
-            Number of iterations: 100
-            Octants to improve in iteration 0: 21
-            Octants to improve in iteration 1: 7
-            Octants to improve in iteration 2: 2
-            Octants to improve in iteration 3: 1
-            No more Octants to improve in iteration 4.
-\end{lstlisting}
-
-\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de corteza cerebral con zona a refinar en lóbulo occipital.\\ Fuente: Elaboración propia.},label={out:cortex_2}]
-input  >    ./script.sh 0.0 ./data/cortex.mdl ./data/cortex_surf_roi_2.mdl c_5r7_2 100
-output >    Threshold: 0.0
-            Main surface: ./data/cortex.mdl
-            Reference surface: ./data/cortex_surf_roi_2.mdl
-            Base name: c_5r7_2
-            Number of iterations: 100
-            Octants to improve in iteration 0: 52
-            Octants to improve in iteration 1: 27
-            Octants to improve in iteration 2: 11
-            Octants to improve in iteration 3: 6
-            Octants to improve in iteration 4: 7
-            Octants to improve in iteration 5: 3
-            No more Octants to improve in iteration 6.
-\end{lstlisting}
 
 \begin{figure}[!ht]
     \centering
@@ -128,36 +116,6 @@ output >    Threshold: 0.0
 
 La ejecución del algoritmo en la malla de Moai para los casos con refinamiento inferior y superior, como podemos ver en \autoref{out:moai_1} y \autoref{out:moai_2}, respectivamente. En ambos casos se logró una malla válida en aproximadamente 5 iteraciones, pero a diferencia de los casos anteriores, como la corteza cerebral y la zona inferior en el Moai, la malla de Moai en la zona superior, se comporta aumentando en un grado menor la cantidad de Octantes por refinar entre la primera y segunda iteración, luego disminuye la cantidad de Octantes manteniendo el aparente modelo exponencial.
 
-\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de Moai con zona a refinar en zona inferior.\\ Fuente: Elaboración propia.},label={out:moai_1},float,floatplacement=H]
-input  >    ./script.sh 0.0 ./data/moai.mdl ./data/moai_surf_roi.mdl moai_5r7 100
-output >    Threshold: 0.0
-            Main surface: ./data/moai.mdl
-            Reference surface: ./data/moai_surf_roi.mdl
-            Base name: moai_5r7
-            Octants to improve in iteration 0: 22
-            Octants to improve in iteration 1: 5
-            Octants to improve in iteration 2: 2
-            Octants to improve in iteration 3: 1
-            Octants to improve in iteration 4: 1
-            No more Octants to improve in iteration 5.
-\end{lstlisting}
-
-
-\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de Moai con zona a refinar en zona superior.\\ Fuente: Elaboración propia.},label={out:moai_2}, float,floatplacement=H]
-input  >    ./script.sh 0.0 ./data/moai.mdl ./data/moai_surf_roi_2.mdl moai_5r7_2 100
-output >    Threshold: 0.0
-            Main surface: ./data/moai.mdl
-            Reference surface: ./data/moai_surf_roi_2.mdl
-            Base name: moai_5r7_2
-            Number of iterations: 100
-            Octants to improve in iteration 0: 10
-            Octants to improve in iteration 1: 12
-            Octants to improve in iteration 2: 9
-            Octants to improve in iteration 3: 3
-            No more Octants to improve in iteration 4.
-\end{lstlisting}
-
-
 \begin{figure}[!ht]
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
@@ -176,24 +134,9 @@ output >    Threshold: 0.0
 \subsubsection{Malla de paladar}
 
 
-\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de Moai con zona a refinar en zona superior.\\ Fuente: Elaboración propia.},label={out:palate_1}, float,floatplacement=H]
-input  >    ./script.sh 0.0 ./data/palate.mdl ./data/palate_surf_roi.mdl palate_5r7 100
-output >    Threshold: 0.0
-            Main surface: ./data/palate.mdl
-            Reference surface: ./data/palate_surf_roi.mdl
-            Base name: palate_5r7
-            Number of iterations: 100
-            Octants to improve in iteration 0: 33
-            Octants to improve in iteration 1: 17
-            Octants to improve in iteration 2: 6
-            Octants to improve in iteration 3: 1
-            Octants to improve in iteration 4: 1
-            No more Octants to improve in iteration 5.
-\end{lstlisting}
+En el caso de la malla de paladar, se realizó un refinamiento general de nivel 5 y 6, que no generó Elementos inválidos, por tanto, se posicionará un área prismática en la zona superior por su alta densidad de zonas cóncavas.
+Esto se hará para obligar una generación de Elementos inválidos. Se utilizó refinamiento general de nivel 5 y 6, adicional a eso se agregará un refinamiento en la zona prismática de nivel 7.
 
-
-
-En el caso de la malla de paladar, podemos 
 
 \begin{figure}[!ht]
     \centering
@@ -208,23 +151,16 @@ En el caso de la malla de paladar, podemos
 
 \subsubsection{Malla de coxis}
 
+Para la representación del Coxis, inicialmente no se utilizó una zona de refinamiento adicional al comienzo de las pruebas porque como se muestra en la \autoref{fig:coxis_8r9_all}, es evidente la amplia densidad de Elementos y concavidades en la malla. Esto genera Elementos inválidos sólo aplicando el algoritmo de generación mallas. Entonces, se escogieron niveles de refinamiento global que permitieran ejecutar el algoritmo de forma eficaz, esto es entre los niveles 4 y 9, el nivel cuatro se escogió porque genera una malla con elemento inválidos pero al momento de visualizarla genera una representación con falta de detalle, no representa muy bien la realidad. El nivel nueve se escogió como cota superior porque genera un error en el sistema debido al alto número de nodos en la malla.
 
-\begin{lstlisting}[style=Console,caption={Output de ejecución algoritmo propuesto en malla de Moai con zona a refinar en zona superior.\\ Fuente: Elaboración propia.},label={out:moai_2}, float,floatplacement=H]
-input  >    ./script.sh 0.0 ./data/palate.mdl ./data/palate_surf_roi.mdl palate_5r7 100
-output >    Threshold: 0.0
-            Main surface: ./data/palate.mdl
-            Reference surface: ./data/palate_surf_roi.mdl
-            Base name: palate_5r7
-            Number of iterations: 100
-            Octants to improve in iteration 0: 33
-            Octants to improve in iteration 1: 17
-            Octants to improve in iteration 2: 6
-            Octants to improve in iteration 3: 1
-            Octants to improve in iteration 4: 1
-            No more Octants to improve in iteration 5.
-\end{lstlisting}
+Para esta sección de la validación, donde sólo se realizó refinamiento global, se utilizó entonces, nivel 5 y nivel 8.
 
+Luego, como se evidenciará más adelante, en el análisis de los resultados, se puede ver claramente que el algoritmo diverge en cuanto a frecuencia de elementos inválidos. Por esto, se agregó una zona prismática de refinamiento local, que se posicionará en la zona superior, donde se encuentra la cadera y articulaciones, por su complejidad geométrica.
 
+Para esta sección de la validación, donde se realizó refinamiento global y local, se busca encontrar una relación entre la cantidad de elementos inválidos y la diferencia entre los niveles de refinamiento.
+Se escogieron dos casos, con amplia diferencia entre los niveles de refinamiento, como la malla $4r7$ y una con reducida diferencia como la malla $5r6$.
+
+Es necesario mencionar, que se realizaron pruebas con los casos $6r8$ y $5r9$, pero no generaron una ejecución válida del algoritmo.
 
 
 \begin{figure}[!ht]
@@ -238,21 +174,38 @@ output >    Threshold: 0.0
 \end{figure}
 
 
+Es incluso una malla interesante de analizar, se logró mallas con diversos niveles de refinamiento. Niveles seis, siete, ocho y nueve de refinamiento global, además de agregar una sección prismática en las zona superior del coxis, cubriendo por completo las zonas más pequeñas de la malla, en ningún caso se logró la convergencia del algoritmo.
+
+
+%TODO explicar comportamiento de coxis
+%\begin{itemize}
+%	\item $rl^g_{6}$: Este nivel genera una malla 
+%	\item $rl^g_{7}$: Este nivel genera una malla 
+%	\item $rl^g_{8}$:
+%	\item $rl^g_{9}$:
+%	\item $rl^g_{5} \and rl^s_{8}$:
+%	\item $rl^g_{5} \and rl^s_{9}$:
+%\end{itemize}
+
+
+%Este caso, se probó aplicando menor $rl$ global y una zona prismática en una de las articulaciones y se mantiene constante la cantidad de elementos inválidos, aproximadamente $E_0 = 45$.
+
+
 
 \subsection{Resultados}
 
-Para analizar el comportamiento del algoritmo, nos enfocaremos en ajustar la cantidad de iteraciones a algún modelo conocido, entregar una hipótesis sobre la anomalía en la malla del coxis y comparar con los resultados entregados en \cite{daines2018repairing}.
+Para analizar el comportamiento del algoritmo, nos enfocaremos en ajustar la frecuencia de Elementos inválidos a algún modelo conocido, entregar una hipótesis sobre la anomalía en la malla del Coxis y comparar con los resultados entregados en \cite{daines2018repairing}.
 
 \subsubsection{Ajuste de la cantidad de iteraciones}
 
-El algoritmo propuesto se comporta de muy buena manera para todas las mallas a excepción de la malla que representa el coxis, cuando logra converger, la cantidad de Octantes por refinar dando como resultado una malla válida, es posible reducir considerablemente la cantidad de Octantes por refinar en muy pocas iteraciones, a simple vista se podría entregar una hipótesis sobre el comportamiento del algoritmo en cada iteración.
+El algoritmo propuesto se comporta de muy buena manera para todas las mallas a excepción de la que representa el Coxis.  Cuando el algoritmo logra converger en una malla válida, es posible reducir considerablemente la cantidad de Octantes por refinar a lo más diez iteraciones, a simple vista se podría entregar una hipótesis sobre el comportamiento del algoritmo en cada iteración.
 
-Para esto, se considerará, a diferencia de lo que ya es tónica en lo antes mostrado, la cantidad de Elementos menores al threshold escogido, es decir, todos los Elementos que pertenecen a la malla y tienen $J_{ENS} \leq 0$, se denotará como $E_0$. Se elaboró la siguiente tabla con el $E_0$ en cada iteración para las diferentes mallas de los casos definidos, \autoref{table:num_els_ref}.
+Para esto, se considerará, a diferencia de lo que ya es tónica en lo antes mostrado, la frecuencia de Elementos que cumplen ciertas condiciones respecto a su calidad, para referirse a la frecuencia de Elementos, se denotará como $E$. Luego, para el análisis sobre ajuste del comportamiento del algoritmo, se considerará, la frecuencia de todos los Elementos que pertenecen a la malla y tienen $J_{ENS} \leq 0$, esto será $E^0$. 
 
-Lo evidente es la relación estrecha entre Elementos y Octantes que se respaldan en su naturaleza estructural. Luego, la aparente relación en el comportamiento de $E$ en todos los casos, permite comenzar la busqueda del modelo, por uno exponencial.
+Se elaboró la siguiente tabla con el $E^0$ en cada iteración para las diferentes mallas de los casos definidos, \autoref{table:num_els_ref}. Lo evidente es la relación estrecha entre Elementos y Octantes, dicho comportamiento se respalda en su naturaleza estructural. Luego, la aparente relación en el comportamiento de $E$ en todos los casos, permite comenzar la búsqueda del modelo, por uno exponencial.
 
 
-En la \autoref{table:num_els_ref} se muestra el comportamiento de $E_0$ en cada iteración, de aquí sólamente se analizarán los casos que convergen a cero.
+En la \autoref{table:num_els_ref} se muestra el comportamiento de $E^0$ en cada iteración, de aquí solamente se analizarán los casos que convergen a cero.
 
 \begin{table}[!ht]
 \begin{tabular}{|lllllll|}
@@ -270,11 +223,14 @@ En la \autoref{table:num_els_ref} se muestra el comportamiento de $E_0$ en cada 
 \multicolumn{1}{|l|}{9}                     & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 1179              \\ \hline
 \multicolumn{1}{|l|}{10}                    & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                        & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                   & \multicolumn{1}{l|}{}                     & 1302              \\ \hline
 \end{tabular}
-\caption{ $E_0$ en cada iteración para los diferentes casos. }
+\caption{ $E^0$ en cada iteración para los diferentes casos. }
 \label{table:num_els_ref}
 \end{table}
 
 \subsection{Análisis de los resultados}
+
+%TODO definir que coxis no se considerará en el annalisis pero que de todas formas se muestra en las grafícas y tablas.
+
 
 \subsubsection{ Análisis de la tasa de reducción de la cantidad de Elementos por refinar en cada iteración }
 
@@ -302,6 +258,7 @@ En la \autoref{table:num_els_ref} se muestra el comportamiento de $E_0$ en cada 
     Calculamos el cociente entre cada par de números consecutivos en la secuencia de cada uno de los casos. \autoref{table:co_els_ref}
 
 	\begin{table}[!ht]
+	\centering
 	\begin{tabular}{|llllll|}
 	\hline
 	\multicolumn{6}{|c|}{ Cociente entre cantidad de Elementos por refinar consecutivos}                                                                                                                                                                           \\ \hline
@@ -354,7 +311,7 @@ En la \autoref{table:num_els_ref} se muestra el comportamiento de $E_0$ en cada 
 
     Estos $\bar{r_i}$ indican que las secuencias podrían ajustarse aproximadamente por un modelo exponencial con razones cercanas a las propuestas en la tabla \ref{table:r_fit}.
 
-    Gráficamente podemos ver el comportamiento de $E_0$ en cada iteración sobre los datos reales en \autoref{fig:exponential_fit_all}.  La gran mayoría de los casos se ajustan de buena manera, podríamos decir que el algoritmo se comporta bajo un modelo exponencial, sin considerar el caso excepcional del coxis.  A diferencia de los demás casos, la malla del coxis diverge también de manera exponencial.  Esto puede explicarse debido al comportamiento en cascada que tiene el algoritmo y la estructura continua de las vecindades cóncavas.
+    Gráficamente podemos ver el comportamiento de $E^0$ en cada iteración sobre los datos reales en \autoref{fig:exponential_fit_all}.  La gran mayoría de los casos se ajustan de buena manera, podríamos decir que el algoritmo se comporta bajo un modelo exponencial, sin considerar el caso excepcional del coxis.  A diferencia de los demás casos, la malla del coxis diverge también de manera exponencial.  Esto puede explicarse debido al comportamiento en cascada que tiene el algoritmo y la estructura continua de las vecindades cóncavas.
     
 %	\begin{figure}[!ht]
 %		\centering
@@ -400,7 +357,7 @@ En la \autoref{table:num_els_ref} se muestra el comportamiento de $E_0$ en cada 
 		\begin{subfigure}[t]{1.0\textwidth}
 			\includegraphics[width=0.75\paperheight, angle=90, origin=c]{figures/analysis/fit_all.png}
 		\end{subfigure}
-		\caption{ Ajuste exponencial de $E_0$ para todos los casos. }
+		\caption{ Ajuste exponencial de $E^0$ para todos los casos. }
 		Fuente: Elaboración propia.
 		\label{fig:exponential_fit_all}
 	\end{figure}
@@ -418,12 +375,10 @@ Cuando se refina cada Octante con Elementos inválidos, genera una reacción en 
 La estadística $J_{ENS}$ se muestra como un histograma que representa la frecuencia de Elementos, siendo este histograma una función de escalonada que define la frecuencia de Elementos de calidad deficiente. En \cite{shepherd-2008}, se define $J_{ENS_{SJ}} \in [0, 0.2[$, como Elementos cuestionables, es decir, Elementos de calidad deficiente. Además, destacar el estándar de ANSYS, que considera $J_{ENS_{AN}} \in [0, 0.03[$, como Elementos inválidos.
 
 Por tanto, para este análisis se acotará definiendo $EC \in \{0, 0.03, 0.05\}$ como Elementos de calidad cuestionable.
-Además, definiremos la frecuencia de Elementos con $J_{ENS} \in [m, n[$ , como $H^{n}_{m}$.
+Además, se definirá la frecuencia de Elementos con $J_{ENS} \in ]m, n]$ , como $E^{n}_{m}$.
 
 Entonces, se graficará en \autoref{fig:fit_all_bar}, los histogramas de cada malla para los intervalos definidos por $EC$.
-Teniendo, $H^{0.0}_{-inf}$, $H^{0.03}_{0.0}$, $H^{0.05}_{0.03}$.
-
- $J_{ENS}$ con la frecuencia de $E_{EC} , \forall x \in \{0, 0.03, 0.05\}$
+Teniendo, $E^{0}_{-inf}$, $E^{0.03}_{0}$, $E^{0.05}_{0.03}$, como los intervalos a estudiar, en $E^{0}_{-inf}$ se refleja la cantidad de Elementos por refinar en cada iteración, analizado anteriormente en el ajuste.
 
 \begin{figure}[!ht]
 	\centering
@@ -434,4 +389,7 @@ Teniendo, $H^{0.0}_{-inf}$, $H^{0.03}_{0.0}$, $H^{0.05}_{0.03}$.
 	Fuente: Elaboración propia.
 	\label{fig:fit_all_bar}
 \end{figure}
+
+Luego, es interesante la constante que siguen ambos intervalos $E^{0.03}_{0}$ y $E^{0.05}_{0.03}$, para todos los casos válidos en este análisis, considerando el orden de magnitud de los Elementos que componen las mallas, los Elementos adyacentes a los Elementos de mala calidad no cambian su calidad considerablemente, tan solo existe una variación en magnitud unitaria, siendo el segundo caso de la corteza cerebral el que presenta mayor diferencia, con una variación de frecuencia de Elementos con $J_{ENS} \in ]0, 0.03]$ aumentando $4$ a $12$ Elementos.
+
 
