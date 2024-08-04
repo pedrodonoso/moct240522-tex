@@ -1,1 +1,2 @@
-*[.log, .fls, .bst, .aux, .bbl, .blg, .synctex.gz, .toc, .out, .idx, .ilg, .ind, .lof, .lot, .bck]
+*[.log, .fls, .aux, .bbl, .blg, .synctex.gz, .toc, .out, .idx, .ilg, .ind, .lof, .lot, .bck]
+# apalike-es.bst is a style for the bibliography
