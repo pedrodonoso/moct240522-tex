@@ -1,4 +1,4 @@
-\secnumbersection{Validación de la solución}
+\secnumbersection{Validación de la solución} \label{section:validation}
 
 
 % Se debe validar la solución propuesta. Esto significa probar o demostrar que la solución propuesta es válida para el entorno donde fue planteada.
@@ -31,10 +31,10 @@
 
 \subsection{Stack de tecnologías}
 
-En primera instancia existe la tentación por implementar una modificación completa de la herramienta \textit{MESHER\_GENERATOR}, esto es viable pero se descarta cuando se prioriza la escalabilidad y mantenibilidad de código. Sobre la eficiencia y rapidez de la propuesta, que son características importantes que evidencian calidad, se evaluarán en secciones posteriores.
-En \textit{MESHER\_GENERATOR} sólo se realizarán las modificaciones descritas en las secciones anteriores que incluyen funcionalidades para identificar y exportar los Octantes a refinar, para generar estadísticas al finalizar el refinamiento en las mallas y las pequeñas modificaciones a las funcionalidades de exportación de la información de los Octantes para luego identificarlos globalmente y así refinar los Octantes correctos.
+En primera instancia existe la tentación por implementar una modificación completa de la herramienta \mesher{}, esto es viable pero se descarta cuando se prioriza la escalabilidad y mantenibilidad de código. Sobre la eficiencia y rapidez de la propuesta, que son características importantes que evidencian calidad, se evaluarán en secciones posteriores.
+En \mesher{} sólo se realizarán las modificaciones descritas en las secciones anteriores que incluyen funcionalidades para identificar y exportar los Octantes a refinar, para generar estadísticas al finalizar el refinamiento en las mallas y las pequeñas modificaciones a las funcionalidades de exportación de la información de los Octantes para luego identificarlos globalmente y así refinar los Octantes correctos.
 
-Entonces, como debemos ejecutar \textit{MESHER\_GENERATOR}, existen varias formas de realizar esto, pero se escogerá la que utilice menos recursos para ejecutar llamadas a sistema como lo hace \textit{bash} en linux. Ya que se requiere de funcionalidades básicas como iteraciones y manipulación de archivos, esta es una buena herramienta a utilizar.
+Entonces, como debemos ejecutar \mesher{}, existen varias formas de realizar esto, pero se escogerá la que utilice menos recursos para ejecutar llamadas a sistema como lo hace \textit{bash} en linux. Ya que se requiere de funcionalidades básicas como iteraciones y manipulación de archivos, esta es una buena herramienta a utilizar.
 
 \subsection{Proceso de análisis}
 
@@ -42,7 +42,7 @@ Para validar la propuesta, se utilizará una serie de mallas con diferentes comp
 \begin{itemize}
     \item Malla de corteza cerebral con área de refinamiento prismática en la zona frontal.
 
-        Propuesta inicial, de por sí la malla de corteza cerebral posee una complejidad media, contiene algunas zonas cóncavas que podrían complejizar el refinamiento. El prisma se posicionará en la zona del lóbulo frontal.
+        Propuesta inicial, de por sí la malla de corteza cerebral posee una complejidad media, contiene algunas zonas cóncavas que podrían enriquecer la validación del algoritmo. El prisma se posicionará en la zona del lóbulo frontal.
     \item Malla de corteza cerebral con área de refinamiento prismática en la zona trasera.
 
         En la zona trasera, lóbulo occipital de la corteza cerebral, de naturaleza cóncava e irregular se posicionará el prisma para refinar localmente, esto con el fin de complejizar el trabajo del algoritmo.
@@ -54,46 +54,46 @@ Para validar la propuesta, se utilizará una serie de mallas con diferentes comp
         Se utilizará también la zona inferior, que no posee mayor nivel de complejidad respecto a su concavidad, con motivo de aumentar el universo de soluciones.
     \item Malla de paladar con área de refinamiento prismática en la zona superior.
 
-        Esta representación posee áreas muy finas con respecto a el resto de la malla, entonces se aplicó un área de refinamiento adicional en la zona superior por su complejidad en función de concavidad.
+        Esta representación posee áreas muy finas con respecto al resto de la malla, entonces se aplicó un área de refinamiento adicional en la zona superior por su complejidad en función de concavidad.
     \item Malla de coxis.
 
         En general esta representación es muy compleja, presenta zonas muy pequeñas y con múltiples concavidades.
 \end{itemize}
 
-Luego de realizar algunas iteraciones básicas para tener una idea del comportamiento de las mallas con el algoritmo, realizando iteraciones donde se añadieron áreas prismáticas en diferentes zonas y otras iteraciones donde se modificaron los niveles de refinamiento tanto general como del área prismática
+Luego de realizar algunas iteraciones básicas para tener una idea del comportamiento del algoritmo con las mallas, realizando iteraciones donde se añadieron áreas prismáticas en diferentes zonas y otras iteraciones donde se modificaron los niveles de refinamiento tanto general como del área prismática
 
-Se identificaron dos factores importantes para tratar cada malla, y que si bien, parecen tener una correlación, este trabajo no busca encontrar dicha relación, por tanto, se tratarán como factores sin correlación.
+Se identificaron dos factores importantes para tratar cada malla, y que si bien, parecen tener una correlación, este trabajo no busca encontrar dicha relación, por tanto, se supondrán como factores sin correlación.
 \begin{itemize}
 	\item Complejidad geométrica
 		Algunas mallas se notaron con alta densidad de regiones que forman depresiones o concavidades. Incluso algunas de ellas, presentaban alta densidad de estas zonas sólo en cierta parte de la representación.
 		Entonces para aquellas que presentaban su alta densidad de concavidades en una área determinada, se le aplicó el área prismática tanto en su zona de alta densidad como también fuera de ella, como sucede en el caso de la representación del Moai y Corteza Cerebral.
-		Para otras mallas, simplemente se insertó un área prismática con el fin de generar Elementos inválidos, como sucede en el Paladar, que si bien, presenta variedad de zonas cóncavas, no genera Elementos inválidos con sólo refinar globalmente, entonces para este caso, se realizaron variaciones en su refinamiento global presentando sólo una opción de posición en su zona prismática de refinamiento local.
+		Para otras mallas, simplemente se insertó un área prismática con el fin de generar \elements{} inválidos, como sucede en el Paladar, que si bien, presenta variedad de zonas cóncavas, no genera \elements{} inválidos con sólo refinar globalmente, entonces para este caso, se realizaron variaciones en su refinamiento global presentando sólo una opción de posición en su zona prismática de refinamiento local.
 		
 	\item Capacidad Computacional
 		Esto hace alusión principalmente al tiempo que demora el algoritmo en realizar refinamiento global o incluso mallas que generan detenimientos forzados del proceso donde se ejecuta el algoritmo por, quizás, presentar un alto número de vértices y aristas, tan alta que el sistema operativo probablemente queda sin memoria. Como por ejemplo, cuando se realizó un refinamiento global de nivel nueve en la malla del Coxis.
 \end{itemize}
 
-Luego de iterar las mallas, se analizará sus estadísticas sobre Elementos de mala calidad.
+Luego de iterar las mallas, se analizará sus estadísticas sobre \elements{} de mala calidad.
 
 \subsection{Ejecución}
 
 En cada malla dependiendo de su complejidad se aplicará o no, un área prismática para refinar localmente, de esta manera añadir consistencia a los resultados.
 
-La única malla a la que no se le aplicará el área prismática es la malla de coxis debido a su compleja naturaleza explicada en la sección anterior.
+La única malla a la que no se le aplicará el área prismática es la malla de coxis debido a su compleja naturaleza explicada en el itemizado anterior.
 
 A cada caso, se ejecutará el algoritmo con threshold $t \in \{ 0, 0.03, 0.05 \}$ y debido a que $E$ en la mayoría de los casos converge evidentemente en las primeras diez iteraciones, se escoge esta como cota superior.
 
 Es necesario, antes de comenzar, definir lo siguiente. Se referirá a una malla con refinamiento global de nivel $X$ y refinamiento local de nivel $Y$, como la malla $XrY$.
 
+Entonces una ejecución del algoritmo para la corteza cerebral con $RL_{global}=5$, $RL_{local}=7$, región prismática con identificador $2$, número de iteración $5$ y threshold $0.03$,  se expondrá como ``cortex\_3\_5r7\_1\_n'', teniendo la siguiente estructura ``<malla\_threshold\_$RL_{global}$r$RL_{local}$\_$ROI_{id}$\_iteración>''.
+
 \subsubsection{Malla de corteza cerebral}
 
 La corteza cerebral, si bien, presenta amplias zonas irregulares, el algoritmo no presenta problemas en su ejecución. Entonces se tratará como un caso para analizar complejidad geométrica.
 
-Al implementar el algoritmo propuesto en la malla de corteza cerebral, entregándole como input el threshold definido en esta propuesta, el modelo de la corteza, el modelo de la superficie prismática a refinar, la base de nombre de los archivos exportados y una cota de diez iteraciones.  Obtenemos el siguiente output \ref{out:cortex_1}, que nos muestra un identificador de cada iteración con la cantidad de Octantes a refinar al finalizar dicha iteración, finalizando exitosamente en la cuarta iteración con una malla sin elementos inválidos y reduciendo la cantidad de Octantes a refinar casi de manera exponencial.
+Al implementar el algoritmo propuesto en la malla de corteza cerebral, entregándole como input las cotas definidas recientemente, el modelo de la corteza, los modelos de la superficie prismática a refinar, la base de nombre de los archivos exportados y una cota de diez iteraciones.  Obtenemos los siguientes resultados \autoref{fig:bar_cortex_all}, que nos muestra un histograma agrupado por los primeros cuatro intervalos de calidad.
 
-Luego se ejecutó el algoritmo con la zona a refinar en el lóbulo occipital con el siguiente output \ref{out:cortex_2}.
-
-Si bien, en esta ocasión se logró obtener una malla válida con algunas iteraciones adicionales, la cantidad de Elementos inválidos se comporta similar a el caso anterior.
+En la parte superior del recuadro, se muestran los histogramas para la primera superficie y en la parte inferior para la segunda superficie, frontal y occipital respectivamente, en la \autopageref{fig:c_5r7_all} se evidencia la disposición de las superficies en la corteza.
 
 
 \begin{figure}[!ht]
@@ -114,7 +114,10 @@ Si bien, en esta ocasión se logró obtener una malla válida con algunas iterac
 
 \subsubsection{Malla de Moai}
 
-La ejecución del algoritmo en la malla de Moai para los casos con refinamiento inferior y superior, como podemos ver en \autoref{out:moai_1} y \autoref{out:moai_2}, respectivamente. En ambos casos se logró una malla válida en aproximadamente 5 iteraciones, pero a diferencia de los casos anteriores, como la corteza cerebral y la zona inferior en el Moai, la malla de Moai en la zona superior, se comporta aumentando en un grado menor la cantidad de Octantes por refinar entre la primera y segunda iteración, luego disminuye la cantidad de Octantes manteniendo el aparente modelo exponencial.
+La ejecución del algoritmo en la malla de Moai para los casos con refinamiento inferior y superior, como podemos ver dispuestas en \autoref{fig:moai_5r7_all}, la superficie de la zona inferior se identificará como la superficie 1 y la superior se identificará como la malla 2. Se puede ver claramente la diferencia en la complejidad geométrica entre ambas superficies, teniendo en la parte superior más concavidades relacionadas a las facciones del moai. Luego, en \autoref{fig:bar_moai_all}, se puede identificar claramente, cómo la superficie 1 se muestra más simple, reduciendo considerablemente más rápido la cantidad de \elements{} de mala calidad en pocas iteraciones.
+No así en la superficies superior, dónde se puede notar como en las primeras iteraciones, para todos los thresholds aumenta en su segunda iteración la cantidad de \elements{} negativos.
+
+en \autoref{fig:bar_moai_all}. 
 
 \begin{figure}[!ht]
     \centering
@@ -133,10 +136,9 @@ La ejecución del algoritmo en la malla de Moai para los casos con refinamiento 
 
 \subsubsection{Malla de paladar}
 
+En el caso de la malla de paladar, se realizó un refinamiento general de nivel 5 y 6, que no generó \elements{} inválidos, por tanto, se trabajará sólo con un área prismática ubicada en la zona superior por su alta densidad de zonas cóncavas, como en \autoref{fig:palate_5r7_all}. 
 
-En el caso de la malla de paladar, se realizó un refinamiento general de nivel 5 y 6, que no generó Elementos inválidos, por tanto, se posicionará un área prismática en la zona superior por su alta densidad de zonas cóncavas.
-Esto se hará para obligar una generación de Elementos inválidos. Se utilizó refinamiento general de nivel 5 y 6, adicional a eso se agregará un refinamiento en la zona prismática de nivel 7.
-
+Como se muestra en \autoref{fig:bar_palate_all} los resultados, todas las instancias lograron ``mallas solución'' en por lo menos 6 iteraciones.
 
 \begin{figure}[!ht]
     \centering
@@ -153,14 +155,13 @@ Esto se hará para obligar una generación de Elementos inválidos. Se utilizó 
 
 Para la representación del Coxis, inicialmente no se utilizó una zona de refinamiento adicional al comienzo de las pruebas porque como se muestra en la \autoref{fig:coxis_8r9_all}, es evidente la amplia densidad de Elementos y concavidades en la malla. Esto genera Elementos inválidos sólo aplicando el algoritmo de generación mallas. Entonces, se escogieron niveles de refinamiento global que permitieran ejecutar el algoritmo de forma eficaz, esto es entre los niveles 4 y 9, el nivel cuatro se escogió porque genera una malla con elemento inválidos pero al momento de visualizarla genera una representación con falta de detalle, no representa muy bien la realidad. El nivel nueve se escogió como cota superior porque genera un error en el sistema debido al alto número de nodos en la malla.
 
-Para esta sección de la validación, donde sólo se realizó refinamiento global, se utilizó entonces, nivel 5 y nivel 8.
+Para esta sección de la validación entonces se utilizaron los niveles 5 y 8 como cotas superior e inferior y se definieron dos casos con refinamiento global y local para una superficie prismática ubicada en la parte superior de la cadera, y tres casos con refinamiento global solamente, describiéndolas respectivamente como $4r7$, $5r8$ y $6$,$7$ y $8$
 
-Luego, como se evidenciará más adelante, en el análisis de los resultados, se puede ver claramente que el algoritmo diverge en cuanto a frecuencia de elementos inválidos. Por esto, se agregó una zona prismática de refinamiento local, que se posicionará en la zona superior, donde se encuentra la cadera y articulaciones, por su complejidad geométrica.
+%Luego, como se evidenciará más adelante, en el análisis de los resultados, se puede ver claramente que el algoritmo diverge en cuanto a frecuencia de elementos inválidos. Es por esto que para esta sección de la validación, donde se realizó refinamiento global y local, se orientó el estudio en encontrar una relación entre la cantidad de elementos inválidos y la diferencia entre los niveles de refinamiento.
 
-Para esta sección de la validación, donde se realizó refinamiento global y local, se busca encontrar una relación entre la cantidad de elementos inválidos y la diferencia entre los niveles de refinamiento.
-Se escogieron dos casos, con amplia diferencia entre los niveles de refinamiento, como la malla $4r7$ y una con reducida diferencia como la malla $5r6$.
 
 Es necesario mencionar, que se realizaron pruebas con los casos $6r8$ y $5r9$, pero no generaron una ejecución válida del algoritmo.
+Además, se colorearon los \octants{} a refinar en cada iteración y siempre mostraban presencia en las articulaciones de la cadera y columna, zonas bastante pequeñas para el alcance de los niveles de refinamiento.
 
 
 \begin{figure}[!ht]
@@ -175,17 +176,6 @@ Es necesario mencionar, que se realizaron pruebas con los casos $6r8$ y $5r9$, p
 
 
 Es incluso una malla interesante de analizar, se logró mallas con diversos niveles de refinamiento. Niveles seis, siete, ocho y nueve de refinamiento global, además de agregar una sección prismática en las zona superior del coxis, cubriendo por completo las zonas más pequeñas de la malla, en ningún caso se logró la convergencia del algoritmo.
-
-
-%TODO explicar comportamiento de coxis
-%\begin{itemize}
-%	\item $rl^g_{6}$: Este nivel genera una malla 
-%	\item $rl^g_{7}$: Este nivel genera una malla 
-%	\item $rl^g_{8}$:
-%	\item $rl^g_{9}$:
-%	\item $rl^g_{5} \and rl^s_{8}$:
-%	\item $rl^g_{5} \and rl^s_{9}$:
-%\end{itemize}
 
 
 %Este caso, se probó aplicando menor $rl$ global y una zona prismática en una de las articulaciones y se mantiene constante la cantidad de elementos inválidos, aproximadamente $E_0 = 45$.
@@ -228,8 +218,6 @@ En la \autoref{table:num_els_ref} se muestra el comportamiento de $E^0$ en cada 
 \end{table}
 
 \subsection{Análisis de los resultados}
-
-%TODO definir que coxis no se considerará en el annalisis pero que de todas formas se muestra en las grafícas y tablas.
 
 
 \subsubsection{ Análisis de la tasa de reducción de la cantidad de Elementos por refinar en cada iteración }
@@ -365,22 +353,18 @@ En la \autoref{table:num_els_ref} se muestra el comportamiento de $E^0$ en cada 
 \end{itemize}
 
 
-\subsubsection{ Análisis del comportamiento de los Elementos posicionados en la vecindad a las zonas refinadas.}
+%\breakpoint{Comienzo 11-08-2024}
 
-Cuando se refina cada Octante con Elementos inválidos, genera una reacción en cadena de refinamiento en los Octantes adyacentes para mantener la consistencia en los niveles de refinamiento de la malla. Debe cumplirse que, dado un Octante $O$ con nivel de refinamiento $rl_o$, deben, sus vecinos directos, $\bar{O}$, tener un nivel de refinamiento $rl_{\bar{o}} \in \{rl_o + 1, rl_o - 1, rl_o\}$.
+\subsubsection{ Análisis del efecto en los Elementos adyacentes }
+
+Cuando se refina cada Octante con Elementos inválidos, genera una reacción en cadena de refinamiento en los Octantes adyacentes para mantener la consistencia en los niveles de refinamiento de la malla. Debe cumplirse que, dado un Octante Objetivo $O$ con nivel de refinamiento $rl_o$, deben, sus vecinos directos, $\bar{O}$, tener un nivel de refinamiento $rl_{\bar{o}} \in \{rl_o + 1, rl_o - 1, rl_o\}$.
+
+Dado lo anterior, supone que cuando se refina un Octante, no debiera provocar un efecto avasallador en la calidad de los Elementos vecinos, sobre todo porque suponiendo que existen Elementos inválidos en la vecindad cercana que es el peor de los casos, al generar el refinamiento en cadena, debería mejorar al igual como sucede con el Octante objetivo. 
+
+Para validar la anterior hipótesis, se generará una serie de Histogramas agrupados por iteración de cada malla y una muestra general de los Histogramas.
 
 
-%La estadística $J_{ENS}$ se muestra como un histograma que representa la frecuencia de los Elementos $E_x$,  $\forall x \in \{0, 0.03, 0.05\}$, es decir, una función de frecuencia escalonada definiendo $x$ como las cota superiores de cada intervalo.
-
-La estadística $J_{ENS}$ se muestra como un histograma que representa la frecuencia de Elementos, siendo este histograma una función de escalonada que define la frecuencia de Elementos de calidad deficiente. En \cite{shepherd-2008}, se define $J_{ENS_{SJ}} \in [0, 0.2[$, como Elementos cuestionables, es decir, Elementos de calidad deficiente. Además, destacar el estándar de ANSYS, que considera $J_{ENS_{AN}} \in [0, 0.03[$, como Elementos inválidos.
-
-Por tanto, para este análisis se acotará definiendo $EC \in \{0, 0.03, 0.05\}$ como Elementos de calidad cuestionable.
-Además, se definirá la frecuencia de Elementos con $J_{ENS} \in ]m, n]$ , como $E^{n}_{m}$.
-
-Entonces, se graficará en \autoref{fig:fit_all_bar}, los histogramas de cada malla para los intervalos definidos por $EC$.
-Teniendo, $E^{0}_{-inf}$, $E^{0.03}_{0}$, $E^{0.05}_{0.03}$, como los intervalos a estudiar, en $E^{0}_{-inf}$ se refleja la cantidad de Elementos por refinar en cada iteración, analizado anteriormente en el ajuste.
-
-\begin{figure}[!ht]
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}[t]{1.0\textwidth}
 		\includegraphics[width=0.75\paperheight, angle=90, origin=c]{figures/analysis/fit_all_bar.png}
@@ -390,6 +374,216 @@ Teniendo, $E^{0}_{-inf}$, $E^{0.03}_{0}$, $E^{0.05}_{0.03}$, como los intervalos
 	\label{fig:fit_all_bar}
 \end{figure}
 
-Luego, es interesante la constante que siguen ambos intervalos $E^{0.03}_{0}$ y $E^{0.05}_{0.03}$, para todos los casos válidos en este análisis, considerando el orden de magnitud de los Elementos que componen las mallas, los Elementos adyacentes a los Elementos de mala calidad no cambian su calidad considerablemente, tan solo existe una variación en magnitud unitaria, siendo el segundo caso de la corteza cerebral el que presenta mayor diferencia, con una variación de frecuencia de Elementos con $J_{ENS} \in ]0, 0.03]$ aumentando $4$ a $12$ Elementos.
+Se puede ver como en la mayoría de los casos válidos, se mantiene constante o varía levemente considerando el orden de magnitud de los Elementos que componen las mallas.
 
 
+
+Para la malla del Moai 1 con threshold $0$, \autoref{fig:bar_moai_all}, que contiene $693$ \elements{}, el efecto en cadena generá un delta positivo para el mejoramiento de la malla de aproximadamente $14$ \elements{} en el intervalo $E^{0.05}_{1}$ entre las iteraciones 0 y 5, que decae de $86$ a $72$ \elements{}, es decir, app el $2\%$ de la cantidad de \elements{} de la malla.
+
+Para la malla del Moai 2 con threshold $0$, el efecto generará un delta negativo para el mejoramiento de app $9$ \elements{} en el intervalo $E^{0.05}_{1}$ entre las iteraciones 0 y 3, app el $1.3\%$ de los \elements{} de la malla.  Pero, si nos fijamos el las mismas iteraciones 0 y 3, en los Octantes Objetivo, que serían los \elements{} Inválidos, el delta es positivo para el mejoramiento, disminuyendo drásticamente en la iteración $3$, pasando de $12$ \elements{} en la iteración 0 a $3$ \elements{} en la iteración $3$, algo muy similar al delta del intervalo $E^{0.05}_{1}$.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[t]{1.0\textwidth}
+		\includegraphics[width=0.75\paperheight, angle=90, origin=c]{figures/analysis/moai_bar_all.png}
+	\end{subfigure}
+	\caption{ Histograma agrupado por intervalo para los dos casos de la malla Moai. }
+	Fuente: Elaboración propia.
+	\label{fig:bar_moai_all}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[t]{1.0\textwidth}
+		\includegraphics[width=0.75\paperheight, angle=90, origin=c]{figures/analysis/cortex_bar_all.png}
+	\end{subfigure}
+	\caption{ Histograma agrupado por intervalo para los dos casos de la malla Corteza.  }
+	Fuente: Elaboración propia.
+	\label{fig:bar_cortex_all}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[t]{1.0\textwidth}
+		\includegraphics[width=0.75\paperheight, angle=90, origin=c]{figures/analysis/cortex_bar_all.png}
+	\end{subfigure}
+	\caption{ Histograma agrupado por intervalo para los dos casos de la malla Paladar.  }
+	Fuente: Elaboración propia.
+	\label{fig:bar_palate_all}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\begin{subfigure}[t]{1.0\textwidth}
+	\includegraphics[width=0.75\paperheight, angle=90, origin=c]{figures/analysis/coxis_bar_all.png}
+\end{subfigure}
+\caption{ Histograma agrupado por intervalo para los dos casos de la malla Coxis.  }
+Fuente: Elaboración propia.
+\label{fig:bar_coxis_all}
+\end{figure}
+
+Un caso similar, es el de la Corteza 1 para threshold $0$, \autoref{fig:bar_cortex_all}, que en las iteraciones 0 y 5, presenta un delta negativo para el mejoramiento de app $11$ \elements{} en el $E^{0.05}_{1}$, pero en el intervalo  $E^{-\infty}_{0}$ el delta es positivo para el mejoramiento, reduciendo la cantidad de \elements{} Inválidos de $64$ a $3$, casi $5$ veces la cantidad de \elements{} que aumentaron en el intervalo  $E^{0.05}_{1}$. 
+
+Con lo anterior, se puede determinar que muy probablemente los \elements{} mejorados se distribuyen en los intervalos de calidad superiores, incluso cuando se utilizan threshold mayores a $0$, es muy difícil que la calidad en los intervalos inferiores al threshold aumenten su frecuencia de \elements{}, es decir, que los \elements{} empeoren su calidad.
+
+
+%\breakpoint{ FIN 11-08-2024}
+%
+%\breakpoint{ INICIO 18-08-2024 }
+
+
+
+\subsubsection{ Análisis de calidad frente al Algoritmo de proyección de nodos.}
+
+Para analizar la calidad de las mallas generadas por el algoritmo propuesto en este estudio, se utilizará el estándar fijado en el proceso de validación en \cite{daines2018repairing}, es decir, se utilizarán los tres tipos de refinamientos que soporta el algoritmo, general, local y superficie. Se definirán diferentes regiones de interés (ROI) mostradas en \autoref{fig:regions_all}, respecto a dichas regiones se realizará una homologación, por tanto, los resultados no serán comparables con total precisión. Para reducir la cantidad de iteraciones generadas por el efecto dominó, se utilizará el mismo criterio, un $RL = n$ en la ROI, un $RL = n - 1$ en la superficie de $\Omega$ y un $RL = n - 2$ en el resto de la malla. Se denominará ``cortex\_ref\_reg'' a las instancias, dónde $ref$ es el $RL$ usado por el ROI, y $reg$ el indice identificador de las regiones de interés. En este caso, se utilizará $RL=5$ para las $regiones$, $RL=4$ para la superficie y $RL=3$ para todo el resto. Se definió un máximo de 20 iteraciones, debido al comportamiento inestable que presentaban algunas iteraciones cuando quedaba sólo un \octant{} por refinar.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[t]{0.8\textwidth}
+		\includegraphics[width=1.0\textwidth]{figures/validation/regions_daines.png}
+		\caption{Regiones definidas por \cite{daines2018repairing}.}
+	\end{subfigure}
+	\begin{subfigure}[t]{1.0\textwidth}
+		\includegraphics[width=1.0\textwidth]{figures/validation/regions_pdonoso.png}
+		\caption{Regiones homologadas.}
+	\end{subfigure}
+	\caption{ Regiones de interés usados en instancias de corteza. De izquierda a derecha se identificarán como Región 0 a 6. En (a) se encuentra la referencia utilizada en \cite{daines2018repairing}, en (b) homologadas en la práctica.}
+	Fuente: Elaboración propia.
+	\label{fig:regions_all}
+\end{figure}
+
+El resultado se presenta en \autoref{table:cortex_validation}. Para cada instancia, se disponen cinco filas con la distribución de la calidad de los \elements{}. En la primera fila se muestra la distribución del algoritmo original. Luego, las 2 filas siguientes representan a las pruebas realizadas con algoritmo de proyección de nodos con threshold $0.03$ y $0.05$, respectivamente y finalmente las 2 filas siguientes corresponden a las pruebas realizadas por el algoritmo propuesto con los mismos threshold definidos para el algoritmo de proyección de nodos.
+
+En la primera columna se muestra el $J_{ENS}$ mínimo de la malla generada, es decir, el \element{} de peor calidad, luego se muestran las frecuencias de los \elements{} que pertenecen a dicho intervalo de calidad desde \elements{} de calidad negativa hasta $J_{ENS} = 0.2$. Al final, la última columna nos muestra la cantidad total de \elements{} de la malla.
+
+
+\begin{table}[H]
+	\scriptsize 
+	\centering
+	\begin{tabular}{lc cc cc cc c}
+		\hline
+		Instance & $J_{ENS}min$ & Inv & [0, 0.03[ & [0.03, 0.05[ & [0.05, 0.1[ & [0.1, 0.15[ & [0.15, 0.2[ & $Total$ \\
+		\hline
+		\texttt{cortex\_5\_0} & -0.009743 & 1 & 8 & 8 & 14 & 35 & 31 & 12895 \\
+		& 0.037720 & 0 & 0 & 7 & 9 & 34 & 38 & 12891 \\
+		& 0.053261 & 0 & 0 & 0 & 7 & 35 & 42 & 12875 \\
+		& 0.039391 & 0 & 0 & 3 & 13 & 20 & 32 & 13322 \\
+	 	& 0.051298 & 0 & 0 & 0 & 12 & 21 & 33 & 13704 \\
+		\hline
+		\texttt{cortex\_5\_1} & -0.000639 & 1 & 7 & 2 & 9 & 18 & 29 & 12005 \\
+		& 0.041439 & 0 & 0 & 2 & 9 & 18 & 24 & 11983 \\
+		& 0.058775 & 0 & 0 & 0 & 9 & 18 & 25  & 11988 \\
+		& 0.031648 & 0 & 0 & 3 & 8 & 24 & 49 & 15686 \\
+		& 0.062543 & 0 & 0 & 0 & 13 & 25 & 52 & 15828 \\
+		\hline
+		\texttt{cortex\_5\_2} & 0.002585 & 0 & 3 & 2 & 13 & 22 & 36 & 8329 \\
+		& 0.030672 & 0 & 0 & 4 & 13 & 21 & 36 & 8327 \\
+		& 0.059482 & 0 & 0 & 0 & 13 & 22 & 38 & 8290 \\
+		& 0.031067 & 0 & 0 & 3 & 11 & 19 & 40 & 8448 \\
+		& 0.058946 & 0 & 0 & 0 & 12 & 19 & 43 & 8515 \\
+		\hline
+		\texttt{cortex\_5\_3} & -0.999649 & 3 & 0 & 1 & 11 & 44 & 86 & 11902 \\
+		& 0.041507 & 0 & 0 & 2 & 12 & 47 & 79 & 11903 \\
+		& 0.000000 & 0 & 2 & 2 & 22 & 48 & 84 & 11886 \\
+		& 0.032822 & 0 & 0 & 1 & 14 & 27 & 100 & 14340 \\
+		& 0.051203 & 0 & 0 & 0 & 15 & 28 & 103 & 14378 \\
+		\hline
+		\texttt{cortex\_5\_4} & -0.222353 & 2 & 2 & 1 & 9 & 34 & 63 & 18513 \\
+		& 0.042440 & 0 & 0 & 1 & 7 & 32 & 64 & 18506 \\
+		& 0.056449 & 0 & 0 & 0 & 7 & 31 & 67 & 18495 \\
+		& 0.055131 & 0 & 0 & 0 & 5 & 16 & 50 & 18661 \\
+		& 0.055131 & 0 & 0 & 0 & 5 & 16 & 50 & 18661 \\
+		\hline
+		\texttt{cortex\_5\_5} & -0.100899 & 2 & 2 & 0 & 8 & 30 & 55 & 9866 \\
+		& 0.072093 & 0 & 0 & 3 & 9 & 33 & 57 & 9871 \\
+		& 0.072093 & 0 & 0 & 0 & 7 & 33 & 57 & 9871 \\
+		& 0.038194 & 0 & 0 & 2 & 8 & 15 & 95 & 13248 \\
+		& 0.050810 & 0 & 0 & 0 & 8 & 14 & 94 & 13294 \\
+ 		\hline
+		\texttt{cortex\_5\_6} & -0.491747 & 9 & 0 & 0 & 2 & 47 & 71 & 9635 \\
+		& -0.981794 & 11 & 1 & 3 & 19 & 55 & 79 & 9599 \\
+		& -0.981794 & 11 & 1 & 3 & 19 & 55 & 79 & 9599 \\
+		& 0.038194 & 0 & 0 & 1 & 3 & 10 & 64 & 10076 \\
+		& 0.007059 & 0 & 0 & 0 & 3 & 10 & 64 & 10257 \\
+		\hline
+		\multicolumn{7}{l}{ $J_{ENS}min$: Jens mínimo, el \element{} de peor calidad.} \\
+		\multicolumn{7}{l}{ $Inv$: \elements{} con calidad menor a $0$.} \\
+		\multicolumn{7}{l}{ $Total$: Cantidad de \elements{} que componen la malla.} \\
+		\multicolumn{7}{l}{ En cada instancia: }\\
+		\multicolumn{7}{l}{\hspace{1em} - Primera fila: Algoritmo Original.}\\
+		\multicolumn{7}{l}{\hspace{1em} - Segunda fila: Algoritmo de proyección de nodos con threshold $0.03$.}\\
+		\multicolumn{7}{l}{\hspace{1em} - Tercera fila: Algoritmo de proyección de nodos con threshold $0.05$.}\\
+		\multicolumn{7}{l}{\hspace{1em} - Cuarta fila: Algoritmo de refinamiento de octantes con threshold $0.03$.}\\
+		\multicolumn{7}{l}{\hspace{1em} - Quinta fila: Algoritmo de refinamiento de octantes con threshold $0.05$.}
+	\end{tabular}
+	\caption{Comparación de calidad de los resultados entre los algoritmos original, proyección de nodos y refinamiento de octantes. }
+	\label{table:cortex_validation}
+\end{table}
+
+
+\vspace{4pt}
+\hrule
+\vspace{4pt}
+
+Se añadió el algoritmo propuesto a la comparación de tiempo y calidad realizada por \cite{daines2018repairing}, en la \autoref{table:cortex_qt}, se evidencia, al igual que en la tabla referenciada anteriormente, las 7 regiones estudiadas para la corteza cerebral, en cada fila que representa a cada instancia, se encuentran tres filas, la primera muestra la calidad y tiempo de ejecución de la instancia con el algoritmo original, en la segunda fila se utiliza el algoritmo de proyección de nodos y en la tercera fila el algoritmo propuesto.
+
+Para medir la calidad, se utilizó el $J_{ENS}$ mínimo de todos los \elements{} de la malla resultante y para el tiempo, medido en segundos, se definirá como el tiempo por iteración $\frac{T}{it}$, considerado como el tiempo promedio de cada iteración, esta expresión no incluye la primera iteración porque se considera aproximadamente similar al tiempo de ejecución del algoritmo original, se define formalmente en \autoref{eq:tit}.
+
+ 
+\begin{equation} \label{eq:tit}
+	\begin{aligned}
+		\frac{T}{it} &= \frac{TO - TP}{TP - 1}
+	\end{aligned}
+\end{equation}
+ 
+ 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		Instance & $J_{ENS}min$ & T [s] & It & T/it [s] \\ \hline
+			cortex\_5\_0 & -0.009743 & 2.312 & - & - \\
+			&  0.037720 & 2.917 & 2 & 0.605 \\
+			&  0.039391 & 2.735 & 4 & 0.683 \\
+		\hline
+			cortex\_5\_1 & -0.000639 & 2.111 & - & - \\
+			& 0.041439 & 2.698 & 2 & 0.587 \\ 
+			& 0.031648 & 3.879 & 5 & 0.775 \\
+		\hline
+			cortex\_5\_2 & 0.002585 & 1.776 & - & - \\
+			& 0.030672 & 2.247 & 2 & 0.471 \\ 
+			& 0.031067 & 1.015 & 2 & 0.507 \\
+		\hline
+			cortex\_5\_3 & -0.999649 & 2.060 & - & - \\
+			& 0.041507 & 2.595 & 2 & 0.535 \\ 
+			& 0.032822 & 2.655 & 4 & 0.663 \\
+		\hline
+			cortex\_5\_4 & -0.222353 & 2.819 & - & - \\
+			& 0.042440 & 3.637 & 2 & 0.818 \\ 
+			& 0.055131 & 1.788 & 2 & 0.894 \\
+		\hline
+			cortex\_5\_5 & -0.100899 & 1.813 & - & - \\
+			& 0.072093 & 2.275 & 2 & 0.462 \\ 
+			& 0.038194 & 5.743 & 9 & 0.638 \\
+		\hline
+			cortex\_5\_6 & -0.491747 & 1.800 & - & - \\
+			& -0.981794 & 3.637 & 5 & 0.459 \\ 
+			& 0.038194 & 4.167 & 8 & 0.520 \\
+		\hline
+		\multicolumn{5}{l}{ $J_{ENS}$: Jens mínimo, el \element{} de peor calidad.} \\
+		\multicolumn{5}{l}{ $T$: Tiempo total de la ejecución del algoritmo.} \\
+		\multicolumn{5}{l}{ $It$: Cantidad de iteraciones realizadas.}
+	\end{tabular}
+	\caption{Comparación en tiempo y calidad entre los algoritmos original, proyección de nodos y refinamiento de octantes, con threshold $0.03$.}
+	\label{table:cortex_qt}
+\end{table}
+
+Al analizar los resultados de calidad y tiempo, se puede notar que el tiempo total de las ejecuciones de los casos de prueba, aumentan considerablemente, incluso en algunos casos aumentando un $100\%$ del tiempo de la ejecución del algoritmo de proyección de nodos, pero, si bien el tiempo total aumenta, el tiempo por iteración, se mantiene relativamente similar.
+
+Este algoritmo y el propuesto para proyectar los nodos presentan la misma complejidad computacional $O(n\cdot2M)$, siendo $M$ la cantidad de nodos y $n$ la cantidad de iteraciones, por tanto, ambos debiesen presentar tiempos por iteración lineales y similares. Evidencia de lo anterior, es la similitud entre estos factores para ambos algoritmos, con una variación del orden de las décimas de segundo por iteración.
+
+Por otra parte, el $J_{ENS}min$ para el algoritmo propuesto se mantiene más cercano al threshold que el algoritmo de proyección de nodos, esto podría interpretarse como un efecto en la vecindad por parte de este último algoritmo, no así el propuesto, que en caso de que la calidad de los \elements{} no presente calidad inferior a la cota, entonces no aplicará refinamiento, es decir, priorizará mantener la calidad existente mientras no existan \elements{} de peor calidad que el threshold.
+
+
+%  TODO: presentar analisis breve de las fallas en la malla coxis, propuestas de posibles problemáticas y soluciones viables.

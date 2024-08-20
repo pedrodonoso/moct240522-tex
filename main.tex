@@ -13,10 +13,10 @@
 \newcommand{\ciudad}{Valparaíso} % e.g. Valparaíso
 \newcommand{\nombrealumno}{Pedro Donoso Aguilera}
 \newcommand{\nombreprofesor}{Claudio Lobos Yáñez}
-\newcommand{\nombrecorreferente}{Nombre del correferente}
+\newcommand{\nombrecorreferente}{Roberto León Vasquez}
 % Mes y año del examen
-\newcommand{\mesexamen}{Noviembre}
-\newcommand{\anioexamen}{2022}
+\newcommand{\mesexamen}{Agosto}
+\newcommand{\anioexamen}{2024}
 % Dedicatoria y agradecimientos
 \newcommand{\dedicatoria}{
 Considerando lo importancia de este trabajo para los alumnos, este apartado es para que el autor entregue palabras personales para dedicar este documento. La extensión puede ser de máximo una hoja y se deben mantener este formato, tipo y tamaño de letra.
@@ -193,7 +193,6 @@ Geometric meshing, Octree, Simulation, Refinement, Transition patterns.
 % }
 \usepackage{url}
 
-
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -316,6 +315,23 @@ Geometric meshing, Octree, Simulation, Refinement, Transition patterns.
 
 \begin{document}
 \sloppy % Para evitar que referencias se escapen de los márgenes.
+
+%\newcommand{\dfrac{\break}{den}point}[1]{
+%	\begin{center}
+%		\vspace{4pt}
+%		\rule{0.25\textwidth}{.4pt}\textbf{REVISION BREAKPOINT}\rule{0.25\textwidth}{.4pt} \\
+%		\textit{#1} \\
+%		\rule{0.25\textwidth}{.4pt}
+%		\vspace{4pt}
+%	\end{center}
+%}
+\def\mesher{\textbf{MESHER\_GENERATOR}}
+\def\jens{\textbf{JENS\_CALCULATOR}}
+\def\labeler{\textbf{GET\_LABELED\_OCTANTS}}
+\def\elements{Elementos}
+\def\element{Elemento}
+\def\octants{Octantes}
+\def\octant{Octante}
 
 \pagestyle{portada}
 \pagenumbering{roman}

@@ -44,8 +44,8 @@ En ciertas aplicaciones de mallas geométricas como por ejemplo en el contexto d
 La técnica Octree es una de las más utilizadas para concentrar nodos en una región determinada de una malla. 
 Cada nodo de un Octree se denomina octante. La idea básica consiste en dividir un octante en varios octantes nuevos de forma recursiva.
 
-El octante es una estructura de datos jerárquica y recursiva definida como un árbol de datos en la que cada nodo de este se divide en un número constante de nodos hijos, normalmente en 8 o 27 hexaedros, estos nodos serán los encargados de generar figuras geométricas como hexaedros, prismas, pirámides y tetraedros que son mostradas en la \autoref{fig:basics_elements}.
-Cuando se utiliza la división en 27, es posible generar una malla hexaédrica pura. Sin embargo, cuando se utiliza el proceso 8-split, las transiciones entre regiones finas y gruesas sólo pueden gestionarse introduciendo diferentes tipos de elementos, a esto se le denomina malla Cctree mixta.
+El octante es una estructura de datos jerárquica y recursiva definida como un árbol de datos en la que cada nodo de éste se divide en un número constante de nodos hijos, normalmente en 8 o 27 hexaedros, estos nodos serán los encargados de generar figuras geométricas como hexaedros, prismas, pirámides y tetraedros que son mostradas en la \autoref{fig:basics_elements}.
+Cuando se utiliza la división en 27, es posible generar una malla hexaédrica pura. Sin embargo, cuando se utiliza el proceso 8-split, las transiciones entre regiones finas y gruesas sólo pueden gestionarse introduciendo diferentes tipos de elementos, a esto se le denomina malla Octree mixta.
 
 \begin{figure}[h]
     \centering
@@ -76,7 +76,7 @@ La tarea principal de esta investigación es el refinamiento de las mallas, es d
 
 En una malla al haber distintos niveles de refinamiento, se pueden formar mallas no conformes. 
 
-Un Cctree equilibrado no es conforme cuando hay múltiples $RL$ y no se respeta la regla de los $RL$ adyacentes. Para mantener la continuidad de la malla, debe aplicarse un patrón de transición sobre los octantes con vecinos de diferentes $RL$. Un patrón de transición sustituirá el hexaedro no conforme por diferentes tipos de elementos, de modo que se garantice que la malla de salida sea conforme. En la \autoref{fig:transition-pattern} se muestra un ejemplo de patrón de transición.
+Un Octree equilibrado no es conforme cuando hay múltiples $RL$ y no se respeta la regla de los $RL$ adyacentes. Para mantener la continuidad de la malla, debe aplicarse un patrón de transición sobre los octantes con vecinos de diferentes $RL$. Un patrón de transición sustituirá el hexaedro no conforme por diferentes tipos de elementos, de modo que se garantice que la malla de salida sea conforme. En la \autoref{fig:transition-pattern} se muestra un ejemplo de patrón de transición.
 
 
 \begin{figure}[!ht]
@@ -106,8 +106,6 @@ Algunas mallas de refinamiento parcial pueden verse afectadas negativamente por 
 
 Actualmente existe un estudio \cite{daines2018repairing} que consiste en reparar elementos inválidos en la superficie de mallas tipo Octree con elementos mixtos y refinamiento parcial. En este estudio se propone una técnica de proyección de nodos para reparar aquellos elementos de los bordes en regiones de transición de la malla, esta técnica se aplica iterativamente debido a que en cada iteración se pueden generar nuevos elementos inválidos.
 
-% TODO: agregar mallas utilzadas, niveles de refinamiento
-
 \subsection{Lineamiento}
 
 De manera similar, se desarrollará desde otra perspectiva la reparación de los elementos inválidos en las regiones de transición que pueden generarse al intentar lograr una representación correcta de los límites.
@@ -116,7 +114,7 @@ Para esto se establecerán medidas de calidad ya definidas en  \cite{daines2018r
 
 \subsection{Objetivos}
 \subsubsection{Objetivo general}
-Ubicar y reparar elementos inválidos o de mala calidad en la superficie de una malla geométrica tridimensional de tipo Cctree mixta.
+Ubicar y reparar elementos inválidos o de mala calidad en la superficie de una malla geométrica tridimensional de tipo Octree mixta.
 
 \subsubsection{Objetivos específicos}
 \begin{itemize}

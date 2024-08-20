@@ -1,28 +1,45 @@
 \secnumbersection{Conclusiones}
 
-Las Conclusiones son, según algunos especialistas, el aspecto principal de una memoria, ya que reflejan el aprendizaje final del autor del documento. En ellas se tiende a considerar los alcances y limitaciones de la propuesta de solución, establecer de forma simple y directa los resultados, discutir respecto a la validez de los objetivos formulados, identificar las principales contribuciones y aplicaciones del trabajo realizado, así como su impacto o aporte a la organización o a los actores involucrados. Otro aspecto que tiende a incluirse son recomendaciones para quienes se sientan motivados por el tema y deseen profundizarlo, o lineamientos de una futura ampliación del trabajo.
 
-\underline{Todo esto debe sintetizarse en al menos 5 páginas.}
+%Las Conclusiones son, según algunos especialistas, el aspecto principal de una memoria, ya que reflejan el aprendizaje final del autor del documento. En ellas se tiende a considerar los alcances y limitaciones de la propuesta de solución, establecer de forma simple y directa los resultados, discutir respecto a la validez de los objetivos formulados, identificar las principales contribuciones y aplicaciones del trabajo realizado, así como su impacto o aporte a la organización o a los actores involucrados. Otro aspecto que tiende a incluirse son recomendaciones para quienes se sientan motivados por el tema y deseen profundizarlo, o lineamientos de una futura ampliación del trabajo.
+
+%\underline{Todo esto debe sintetizarse en al menos 5 páginas.}
+
+El algoritmo propuesto fue capaz de eliminar Elementos inválidos en la mayoría de los casos, sin modificar o provocar estiramiento en los nodos de la representación ni empobrecimiento de la calidad.
+
+Al realizar la validación del algoritmo, solo una de las instancias de prueba falló. Cuando se utilizó diversos umbrales de calidad y regiones de interés, no hubo cambios considerables en el comportamiento del algoritmo ni degradación en las estadísticas $J_{ENS}$.
+
+Si bien los tiempos no son óptimos considerando la complejidad del algoritmo, se logró el objetivo de este estudio, implementar y validar el algoritmo propuesto, no así la implementación.
+
+Se recomienda, fijar la cantidad de iteraciones en 10, ya que, la mayoría de los casos se obtuvieron mallas válidas en a lo más 7 iteraciones. Cuando requería más iteraciones, las pruebas normalmente fallaban, como en el caso de la representación del Coxis, que diverge y genera mallas de peor calidad.
 
 
-El algoritmo propuesto fue capaz de eliminar Elementos inválidos en la mayoría de los casos, sin modificar o provocar estiramiento en los nodos de la representación ni empobrecimiento de la calidad de los Elementos vecinos, como se muestra en %TODO REFERENCIA A TABLAS O GRAFICOS
 
-Al realizar la validación del algoritmo, solo una de las instancias de prueba falló. Cuando se utilizó diversos umbrales de calidad (0.05) no hubo cambios considerables en el comportamiento del algoritmo ni degradación en las estadísticas $J_{ENS}$.
+Por tanto, agregar una condición de término que realice el seguimiento del deterioro de la calidad de la malla y retorno automatizado a un estado anterior, es fundamental para casos como el ``moai\_5\_5r5\_1\_n'' registrado en \autoref{fig:bar_moai_all}. Aquí se muestra un posible punto intermedio en la iteración 8, dónde se logran cero \elements{} inválidos y dos \elements{} en $E_0^{0.03}$ y uno en $E_0^{0.05}$, una calidad aceptable para un threshold $0.05$. 
 
-Se concluye que el algoritmo funciona la mayor parte del tiempo para lograr mallas válidas en pocas iteraciones. Sin embargo, no puede utilizarse en todas las mallas, ya que, existen, como en el caso de la representación del Coxis, dominios que divergen a mallas de peor calidad que la inicial.
 
+% TODO: optimizar la implementación 
+	- no leer archivos con modelo de ddatos en cada iteración
+	- no escribir en cada iteración las representaciones gráficas de las mallas, sólo hacerlo en la malla final
+	
+	
+% TODO: proponer un sistema de software que gestione algoritmos iterativos, muestre el historial de las estadisticas de calidad y ayude al usuario a seccionar el mejor.
+
+intro
+
+	objetivos
+	porqué
+
+discusión sobre los resultados
+qué siginifico para mi (proceso de implementacion)
+lista problemas no resueltos o complejidades de la solucion
+
+% TODO: considerar caso de coxis
+% TODO: considerar limitación de tratamiento del modelo entre iteraciones, integrar todo en un proceso para no realizar lectura de archivos durante la iteracion del algoritmo.
+% TODO: utilización malla cortex como caso simple y coxis como caso complejo para validar algoritmos futuros, estandarizar.
 % TODO:  agregar una condicion de termino y retorno automatizado a un estado anterior.
+% TODO: proponer un sistema de refinamiento local, es decir, que no itere toda la malla para encontrar un elemento u octante, sino que refine un octante y sólo modifique los octantes adyacentes o directamente conectados. Esto permitiría un refinamiento concurrente.
 
-Se recomienda, fijar la cantidad de iteraciones en 10, ya que, la mayoría de los casos se obtuvieron mallas válidas en a lo más 7 iteraciones. Cuando requería más iteraciones, las pruebas normalmente fallaban.
+mejoras	
+priorizacion del trabajo futuro
 
-
-% imagen de elementos invalidados
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=1\textwidth]{figures/bad_quality_zone/bq_zone_ALL.png}
-	\caption{\label{fig:octree_invalid_elements} Elementos inválidos de zona de mala calidad en malla de corteza cerebral.} 
-	\small{Diferentes perspectivas de una zona particular de una malla de corteza cerebral que presenta en color verde un par de elementos inválidos.} \\ Fuente: Elaboración propia.
-\end{figure}
-
-A continuación, \autoref{fig:octree_invalid_elements}, y en gran parte de este trabajo, se evidencia que los patrones de superficie para generar estas transiciones no están diseñados para ser aplicados sobre elementos mixtos, sino que solamente para mallas compuestas por hexaedros.  Esto puede surgir especialmente en sectores de la malla donde el dominio es cóncavo. 

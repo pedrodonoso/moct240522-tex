@@ -18,7 +18,7 @@ La medición de la calidad tiene dos propósitos fundamentales:
 
 \begin{itemize}
 	\item Comparar la malla, ya sea con otras mallas producidas por el mismo dominio o con la propia noción de malla ``teóricamente perfecta".
-	\item Mejorarla, es decir, obtener una malla ``mejor" comenzando por un estado de mala calidad mediante el uso de algoritmos de reparación.
+	\item Mejorarla, es decir, obtener una malla ``mejor'' comenzando por un estado de mala calidad mediante el uso de algoritmos de reparación.
 \end{itemize}
 
 % Para el hexaedro, el tetraedro y la cuña se utiliza la variación regular. Por desgracia no existe una variación regula para todas las pirámides. 
@@ -27,16 +27,16 @@ Existen múltiples medidas de calidad de los elementos geométricos utilizados, 
 Una medida utilizada habitualmente es la relación de aspecto, $AR$ \footnote{ AR : Aspect Relation.}. En general, el $AR$ de un elemento es la relación entre su borde más corto y su borde más largo. Otra variación significativa es el Relación de Aspecto Gamma, ARG \footnote{ARG: Aspect Ratio Gamma.}, el $ARG$ penaliza más las deformaciones de un tetraedro en comparación con otras variaciones del $AR$.
 Para medir la distorsión de un nodo en contraste con su vecino podemos utilizar la \textit{Jacobiana}. Siendo $J^a$ el Jacobiano del nodo $a$ y $d_i$ el vector del nodo $a$ al nodo $i$. El Jacobiano se puede calcular realizando el producto punto entre la distancia nodal del vector altura del tetraedro y el producto cruz de las distancias nodales de los vectores basales.
 
-El problema del Jacobiano es sus dependencias a las distancias entre nodos y a la ortogonalidad entre sus aristas, con respecto a la primera, dos elementos con los mismos ángulos internos pero con tamaños distintos de aristas obtienen distintos valores para esta medida de distorsión y sobre la segunda, la medida de calidad no se puede extender a todos los tipos de elementos geométricos que se encontrarán en este tipo de mallas, mallas mixtas.
+El problema del Jacobiano es sus dependencias a las distancias entre nodos y a la ortogonalidad entre sus aristas, con respecto a la primera, dos elementos con los mismos ángulos internos pero con tamaños distintos de aristas obtienen distintos valores para esta medida de distorsión y sobre la segunda, la medida de calidad no se puede extender a todos los tipos de elementos geométricos que se encontrarán en las mallas mixtas.
 
 Por tanto, para suplir la dependencia a las distancias se utilizará el Jacobiano Escalado, $J_S$ \footnote{$J_S$ : Scaled Jacobian}.
 Esta medida de calidad normaliza los vectores del tetraedro, así sólo dependerá de la ortogonalidad de sus aristas.
 El $J_S$ de un hexaedro es el peor $J_S$ de sus nodos. 
 
-En \cite{daines2018repairing} se define el rango de aceptación de la calidad de los elementos. Principalmente, $J_S < 0$ son Elementos invertidos, se define en \cite{shepherd-2008} un estándar utilizado en las métricas de calidad para Jacobiano Escalado importado por la librería Veredict de Cubit \cite{verdict} que fija $J_S < 0$ como Elementos de inaceptables y $J_{S} \in [0, 0.2[$, correspondería a Elementos cuestionables, es decir, Elementos de calidad deficiente. Además, se destaca el estándar de ANSYS, una herramienta robusta a la hora de realizar simulaciones computarizadas, que considera $J_{S} \in [0, 0.03[$, como Elementos inválidos. Elementos con $J_S \geq 0.2$ como Elementos de buena calidad y Elementos con $J_{S} = 1$, como un hexaedro perfecto.
+En \cite{daines2018repairing} se define el rango de aceptación de la calidad de los elementos. Principalmente, $J_S < 0$ son \elements{} invertidos, se define en \cite{shepherd-2008} un estándar utilizado en las métricas de calidad para Jacobiano Escalado importado por la librería Veredict de Cubit \cite{verdict} que fija $J_S < 0$ como Elementos de inaceptables y $J_{S} \in [0, 0.2[$, correspondería a Elementos cuestionables, es decir, Elementos de calidad deficiente. Además, se destaca el estándar de ANSYS, una herramienta robusta a la hora de realizar simulaciones computarizadas, que considera $J_{S} \in [0, 0.03[$, como Elementos inválidos. Elementos con $J_S \geq 0.2$ como Elementos de buena calidad y Elementos con $J_{S} = 1$, como un hexaedro perfecto.
 
 %
-Por tanto, para este análisis se acotará definiendo $J_{S} \in ]-\infty, 0]$ como Elementos inválidos, estos específicamente corresponden a Elementos negativos o invertidos, que conformarían mallas con topología inconsistente. Luego, se considerará, a diferencia de los trabajos anteriores, Elementos de calidad cuestionable los que presenten $J_{S} \in ]0, 0.05]$, este intervalo se acotará y separará en dos intervalos, $J_{S} \in ]0, 0.03] \wedge J_{S} \in ]0.03 , 0.05]$, esto con el fin de enfocar el estudio en Elementos que produzcan una malla inconsistente, reduciendo la cota superior de $0.2$ a $0.05$ y estudiar las consecuencias en la propagación del cambio de la calidad del refinamiento, dividiendo el intervalo en dos, considerando el estandar de ANSYS como referencia al dividir dicho intervalo.
+Por tanto, para este análisis se acotará definiendo $J_{S} \in ]-1, 0]$ como \elements{} inválidos, estos específicamente corresponden a \elements{} negativos o invertidos, que conformarían mallas con topología inconsistente. Luego, se considerará, a diferencia de los trabajos anteriores, \elements{} de calidad cuestionable los que presenten $J_{S} \in ]0, 0.05]$, este intervalo se acotará y separará en dos intervalos, $J_{S} \in ]0, 0.03] \wedge J_{S} \in ]0.03 , 0.05]$, esto con el fin de enfocar el estudio en \elements{} que produzcan una malla inconsistente, reduciendo la cota superior de $0.2$ a $0.05$ y estudiar las consecuencias en la propagación del cambio de la calidad del refinamiento, dividiendo el intervalo en dos, considerando el estándar de ANSYS como referencia al dividir dicho intervalo.
 
 %Además, se definirá la frecuencia de Elementos con $J_{S} \in ]m, n]$ , como $E^{n}_{m}$.
 %
@@ -106,23 +106,24 @@ J^e_{ENS} &=
 Para $J_{ENS}$ se definen los mismo intervalos que para $J_S$ para identificar Elementos.
 
 \begin{itemize}
-	\item $J_{ENS} \in ]-\infty, 0]$ : Elementos inválidos.
+	\item $J_{ENS} \in ]-1, 0]$ : Elementos inválidos.
 	\item $J_{ENS} \in ]0, 0.05]$ : Elementos cuestionables.
 	\item $J_{ENS} \in ]0.05, 1]$ : Elementos de buena calidad.
 \end{itemize}
 
-En la etapa de validación, el estudio se concentrará en contabilizar la frecuencia de Elementos que presentan una calidad determinada, por ello se definirá la frecuencia de Elementos con $J_{ENS} \in ]m, n]$ , como $E^{n}_{m}$.
+En la etapa de validación, el estudio se concentrará en contabilizar la frecuencia de \elements{} que presentan una calidad no deseable(inválidos y cuestionables), por ello se definirá la frecuencia de Elementos con $J_{ENS} \in ]m, n]$ , como $E^{n}_{m}$.
 
-Teniendo, $E_{-inf}^{0}$, $E_{0}^{0.03}$ y $E_{0.03}^{0.05}$, como las principales frecuencias de los intervalos a estudiar.
+Teniendo, $E_{-1}^{0}$, como la expresión que se referirá a la frecuencia de \elements{} Inválidos, $E_{0}^{0.03}$, a los \elements{} Cuestionables y $E_{0.03}^{0.05}$, a parte de los \elements{} de Buena Calidad
 % Más adelante se establecerán diferentes estandares para identificar elemementos inválidos
+
 
 \subsection{Malla inicial}
 
 Para comprender de mejor forma el problema buscaremos un entorno donde existan elementos inválidos, para ello procederemos a estudiar la localidad de los elementos de mala calidad, entonces se generará una malla que llamaremos la \textit{malla inicial}.
 
-Esta será la representación de una corteza cerebral a un nivel 5 de refinamiento en general y se le aplicará un refinamiento de nivel 7 a una superficie prismática regular inserta en la parte frontal del cerebro. Como se muestra en la representación de puntos de la malla del cerebro y representación alámbrica de la superficie prismática de la \autoref{fig:cortex_surf}.
+Ésta será la representación de una corteza cerebral a un nivel 5 de refinamiento en general y se le aplicará un refinamiento de nivel 7 a una superficie prismática regular inserta en la parte frontal del cerebro. Como se muestra en la representación de puntos de la malla del cerebro y representación alámbrica de la superficie prismática de la \autoref{fig:cortex_surf}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
         \includegraphics[width=1.0\textwidth]{figures/bad_quality_zone/cortex_surf.png}
@@ -171,10 +172,21 @@ output >    use:  ./mesher [-d] input.mdl [-o] input.off [-u] output
 
 Se denominará como \textit{MESHER\_GENERATOR} en el resto del presente trabajo.
 
+De esta herramienta, se destacará los diferentes formatos de exportación:
+
+\begin{itemize}
+	\item vtk: Formato utilizado para visualización en la plataforma Paraview.
+	\item oct: Formato utilizado para persistir los datos utilizados en el algoritmo.
+\end{itemize}
+
+Adicionales a estos formatos, se agregarán algunos importantes adicionales para realizar las iteraciones y validaciones correspondientes explicados en la siguiente sección.
+
+Otra funcionalidad a destacar es la opción de refinamiento dado un listado de Octantes y Elementos, que se explotará y mejorará para definir esta propuesta.
+
 \subsubsection{Mixed-element $J_{ENS}$ stadistics generator}
 
 El generador de estadísticas $J_{ENS}$ para mallas Octree de elementos mixtos es una herramienta que facilita la validación de mallas, creada por la comunidad y liderado por el profesor Claudio Lobos. Puede generar histogramas con diferentes índices como Scaled Jacobian, Normalized Scaled Jacobian, Aspect Ratio, etc. 
-En este trabajo lo utilizaremos principalmente para validar cada malla generada enfocándonos sólo en obtener la frecuencia del incide $J_{ENS}$. Esto es un histograma con la frecuencia de todos los elementos de la malla con $J_{ENS} \in \{-\infty , 1\}$, como se muestra en la figura \autoref{out:jens_output_c_5r7_0}.
+En este trabajo lo utilizaremos principalmente para validar cada malla generada enfocándonos sólo en obtener la frecuencia del indice $J_{ENS}$. Esto es un histograma con la frecuencia de todos los elementos de la malla con $J_{ENS} \in \{-1 , 1\}$, como se muestra en la figura \autoref{out:jens_output_c_5r7_0}.
 
 \begin{lstlisting}[style=console,caption={Opciones de jens calculator. \\ Fuente: Elaboración propia.}]
 input   >   ./jens -h
@@ -217,7 +229,7 @@ output  >   negative: 27
             average quality 0.806127
 \end{lstlisting}
 
-Se denominará como \textit{JENS\_CALCULATOR} en el resto del presente trabajo.
+Se denominará como \jens{} el resto del presente trabajo.
 
 Convenientemente, los primeros tres intervalos del histograma pertenecen a los intervalos de interés para este estudio.
 
@@ -226,9 +238,9 @@ Convenientemente, los primeros tres intervalos del histograma pertenecen a los i
 Paraview es un software open-source multiplataforma que facilita la visualización de representaciones en 3D. Presenta una interfaz interactiva, nos ayudará analizar visualmente el estado de la malla en todo momento. Se utilizará el formato con extensión \textit{vtk} para visualizar mallas en esta plataforma.
 
 Este software presenta diferentes secciones que nos ayudarán a analizar cada malla generada, la sección marcada con el número 1 en \autoref{fig:paraview_all}, se presentan todas las mallas que se representarán gráficamente en la sección 2. Existe un panel de herramientas en la sección 3 que nos ayudará a marcar/desmarcar elementos o puntos en el panel 2 que se verán reflejados e identificados en el recuadro 5.
-En la sección 4 podremos cambiar la forma de visualizar cada representación, esto nos ayudará a identificar elementos, identificar si una malla es válida en su construcción, etc.
+En la sección 4 podremos cambiar la forma de visualizar cada representación, esto nos ayudará a identificar elementos, identificar gráficamente si una malla es válida en su construcción, etc.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/paraview/paraview_all.png}
     \caption{ Interfaz de software Paraview, se muestra una sección de la malla inicial con dos elementos seleccionados.\\  Fuente: Elaboración propia.}
@@ -244,6 +256,7 @@ En esta sección sólo se explicará la estructura de datos elemental y de forma
 Como se definió anteriormente, una malla Octree se divide en octantes, cada uno de estos octantes contienen Elementos mostrados en la \autoref{fig:basics_elements}.  Luego, cada uno de estos Elementos está constituido por Puntos, que es la unidad más pequeña.
 
 Para ejemplificar en \autoref{fig:entity_relation_diagram}, se presenta un pequeño diagrama entidad relación que muestra la estructura de los objetos relacionados en el algoritmo de la generación de mallas.
+
 
 %\begin{lstlisting}[style=CStyle,caption={Clase Octant.\\ Fuente: Elaboración propia.},label={code:octant_class}]
 %#include <vector>
@@ -263,19 +276,19 @@ Para ejemplificar en \autoref{fig:entity_relation_diagram}, se presenta un peque
 %}
 %\end{lstlisting}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figures/entity_relation_diagram.png}
-	\caption{Diagrama entidad-relación de el generador de mallas.\\  Fuente: Elaboración propia.}
+	\includegraphics[width=0.65\textwidth]{figures/entity_relation_diagram.png}
+	\caption{Diagrama entidad-relación de generador de mallas.\\  Fuente: Elaboración propia.}
 	\label{fig:entity_relation_diagram}
 \end{figure}
 
 \subsubsection{Acercamiento al algoritmo de Mixed-element mesh generator}
 
-Parte importante del software mencionado en la Sección \ref{section:mesh_generator_definition} es la generación de la malla que se define y explica brevemente en \cite{daines2018repairing}.
+Parte importante del software mencionado en la \autoref{section:mesh_generator_definition} es la generación de la malla que se define y explica brevemente en \cite{daines2018repairing}.
 
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \SetKwInOut{KwIn}{Input}
 \SetKwInOut{KwOut}{Output}
 % functions
@@ -313,8 +326,9 @@ Parte importante del software mencionado en la Sección \ref{section:mesh_genera
 \label{alg:propuesta_daines} 
 \end{algorithm}
 
-Es importante además explicar brevemente los diferentes formatos de exportación del algoritmo.
-%Esto porque se utilizarán para mantener un historial de
-% .histo, .m3d, .map, .oct, .ref
+En términos simples,  el algoritmo consiste en generar una malla balanceada Octree, aplicar patrones de transición entre Octantes con diferencias de $RL$ mayor a 1, luego se realizan proyecciones en los nodos que se encuentran cerca de la frontera de $\Omega$ para generar una mejor representación del borde.
+
+Para este estudio, no es necesario profundizar en este algoritmo, pero es importante mencionarlo y entender su estructura de datos para explicar brevemente los diferentes formatos de exportación del algoritmo que utilizaremos para aplicar una versión iterativa del mismo enfocándonos específicamente en los Elementos de mala calidad.
+
 
 
